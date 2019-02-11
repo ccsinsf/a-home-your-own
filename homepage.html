@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>Header for homepage</h1>
+    
+
+    <img class="title-img" src="http://placemelon.com/300/300">
+    <form action='/get-price'>
+        What's your budget for a home? 
+        <input type='text' name='price' required><br>
+        <input type="submit">
+    </form>
+
+{% endblock %}
