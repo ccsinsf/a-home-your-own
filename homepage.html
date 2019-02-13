@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<head>{% block title %}<title>Find your new home</title>{% endblock %}
+    <link rel="stylesheet" type="text/css" href="/static/styles.css"></head>
+    <h1>Placeholder older Header for homepage</h1>
+    
+
+    <img class="title-img" src="http://placemelon.com/300/300">
+    <form action='/get-price'>
+        What's your budget for a home? 
+        <input type='text' name='price' required><br>
+        <input type="submit">
+    </form>
+
+{% endblock %}

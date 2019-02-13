@@ -17,7 +17,7 @@ class Price(db.Model):
 
     price_id= db.Column(db.Integer, autoincrement=True, primary_key=True)
     city_id = db.Column(db.Integer, db.ForeignKey('cities.city_id'), nullable=True)
-    median_home_price = db.Column(db.Integer, nullable=True)
+    median_home_price = db.Column(db.String(15), nullable=True)
     sales_price_mom = db.Column(db.Integer, nullable=True)
     print_date= db.Column(db.DateTime(), nullable=True)
 

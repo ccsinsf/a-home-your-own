@@ -14,17 +14,16 @@ def load_prices():
 
     print("prices")
 
-    # Delete all rows in table, so if we need to run this a second time,
-    # we won't be trying to add duplicate users
+    # Delete all rows in table,  if we need to run this a second time
     # price.query.delete()
 
     # Read modified_HB_data file and insert data
     for row in open("seed_data/city_prices_rf.csv"):
         # "seed_data/city_prices_z"
         row = row.rstrip()
-        price_id, median_home_price, sales_price_mom, print_date, unused, state, city = row.split(",")
+        median_home_price, sales_price_mom, print_date, unused, state, city = row.split(",")
 
-        prices = Price(price_id=price_id,
+        prices = Price(
                     median_home_price=median_home_price,
                     sales_price_mom=sales_price_mom,
                     print_date= print_date)
