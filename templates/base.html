@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% block title %}<title>Find your new home</title>{% endblock %}
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+</head>
+<body>
+    <!-- Show flashed messages -->
+    {% with messages = get_flashed_messages() %}
+      {% for message in messages %}
+          <div class="alert alert-warning">{{ message }}</div>
+      {% endfor %}
+    {% endwith %}
+
+    {% block content %} CONTENT GOES HERE {% endblock %}
+</body>
+</html>

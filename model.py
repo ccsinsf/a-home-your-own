@@ -16,12 +16,12 @@ class Price(db.Model):
     __tablename__ = "prices"
 
     price_id= db.Column(db.Integer, autoincrement=True, primary_key=True)
-    city_id = db.Column(db.ForeignKey, db.String(64), nullable=False)
+    city_id = db.Column(db.Integer, db.ForeignKey('cities.city_id'), nullable=True)
     median_home_price = db.Column(db.Integer, nullable=True)
     sales_price_mom = db.Column(db.Integer, nullable=True)
     print_date= db.Column(db.DateTime(), nullable=True)
 
-    price = db.relationship('City')
+    city = db.relationship('City')
 
 class City(db.Model):
     """Cities and their locations"""
@@ -31,10 +31,10 @@ class City(db.Model):
     city_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     city_name= db.Column(db.String(25))
     state = db.Column(db.String(15))
-    latitude = db.Column(db.Integer, nullable = False)
-    longitude = db.Column(db.Integer, nullable = False)
+    latitude = db.Column(db.Integer, nullable = True)
+    longitude = db.Column(db.Integer, nullable = True)
     
-    city = db.relationship('Price')
+    price = db.relationship('Price')
 
 
 # Helper functions
@@ -43,7 +43,7 @@ def connect_to_db(app):
     """Connect the database to our Flask app."""
 
     # Configure to use our PstgreSQL database
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///ratings'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///home_db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app
     db.init_app(app)
