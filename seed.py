@@ -39,7 +39,7 @@ def load_cities():
     """Load cities from city_locations into database."""
     print("cities")
 
-    for row in open("seed_data/city_locations.csv"):
+    for row in open("seed_data/city_locations_encoding1.csv"):
         row = row.rstrip()
         city_id, city_name, state, latitude, longitude = row.split(",")
 
