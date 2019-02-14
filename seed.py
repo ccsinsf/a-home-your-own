@@ -23,6 +23,8 @@ def load_prices():
         row = row.rstrip()
         median_home_price, sales_price_mom, print_date, unused, state, city = row.split(",")
 
+        median_home_price = float(median_home_price)
+
         prices = Price(
                     median_home_price=median_home_price,
                     sales_price_mom=sales_price_mom,
