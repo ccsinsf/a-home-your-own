@@ -45,28 +45,28 @@ def search1():
 
     return render_template("/get_price.html")
 
-@app.route('/get-price', methods=['POST'])
-def search():
-    """When the user has entered a number into the search box and "submitted" it,
-    process the form in this route"""
+# @app.route('/get-price', methods=['POST'])
+# def search():
+#     """When the user has entered a number into the search box and "submitted" it,
+#     process the form in this route"""
     
-    price = request.form.get['price']
-    price = int(price)
-    # Get the dollar amount that was entered in the input box called 'price' on homepage.html
+#     price = request.form.get['price']
+#     price = int(price)
+#     # Get the dollar amount that was entered in the input box called 'price' on homepage.html
 
-    # price.strip('$','.',',', '-')
-    # # Strip any non alphanumberical symbols, incase a user enters the $, ',', or decimal 
+#     # price.strip('$','.',',', '-')
+#     # # Strip any non alphanumberical symbols, incase a user enters the $, ',', or decimal 
 
-    # search_price = int(price)
-    # # Convert the number to an integer 
+#     # search_price = int(price)
+#     # # Convert the number to an integer 
 
-    # # List slice the last 3 index positions 
-    # narrow_search = search_price[:-3]
+#     # # List slice the last 3 index positions 
+#     # narrow_search = search_price[:-3]
 
-    print(price)
-    print(price)
+#     print(price)
+#     print(price)
 
-    return redirect("/get-price")
+#     return redirect("/get-price")
 
     # need to index the search_price 
 
