@@ -21,7 +21,7 @@ class Price(db.Model):
     sales_price_mom = db.Column(db.String(15), nullable=True)
     print_date= db.Column(db.String(10), nullable=True)
 
-    city = db.relationship('City')
+    city = db.relationship("City")
 
 class City(db.Model):
     """Cities and their locations"""
@@ -34,7 +34,7 @@ class City(db.Model):
     latitude = db.Column(db.Float(11), nullable = True)
     longitude = db.Column(db.Float(11), nullable = True)
     
-    price = db.relationship('Price')
+    price = db.relationship("Price")
 
 
 # Helper functions
