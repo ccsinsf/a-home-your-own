@@ -30,6 +30,9 @@ def load_prices():
                     sales_price_mom=sales_price_mom,
                     print_date= print_date)
 
+        def __repr__(self):
+            return (f' Median price: {median_home_price}, Sales price MoM: {sales_price_mom}, Print date: {print_date}' )
+
         # We need to add to the session or it won't ever be stored
         db.session.add(prices)
 
@@ -50,6 +53,10 @@ def load_cities():
                     state=state,
                     latitude= latitude,
                     longitude=longitude)
+
+
+        def __repr__(self):
+            return (f' City Name: {city_name}, State: {state}')
 
         # We need to add to the session or it won't ever be stored
         db.session.add(cities)
