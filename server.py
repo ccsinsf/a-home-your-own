@@ -28,6 +28,7 @@ def search1():
     process the form in this route"""
     
     # price = request.form.get['price']
+
     # price = int(price)
     # # Get the dollar amount that was entered in the input box called 'price' on homepage.html
 
