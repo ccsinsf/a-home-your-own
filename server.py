@@ -22,12 +22,14 @@ def index():
     """Homepage incudes the search form."""
     return render_template("homepage.html")
 
-@app.route('/get-price', methods=['GET'])
+@app.route('/get-price', methods=['GET', 'POST'])
 def search1():
     """When the user has entered a number into the search box and "submitted" it,
     process the form in this route"""
     
-    # price = request.form.get['price']
+    # if price:
+    #     # if the user entered a number....
+    #     price = request.args.get[price]
 
     # price = int(price)
     # # Get the dollar amount that was entered in the input box called 'price' on homepage.html

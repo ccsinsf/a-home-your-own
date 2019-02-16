@@ -17,13 +17,15 @@ def load_prices():
     for row in open("seed_data/city_prices_rf.csv"):
         # "seed_data/city_prices_z"
         row = row.rstrip()
-        median_home_price, sales_price_mom, print_date, unused, state, city = row.split(",")
+  
+        median_home_price, sales_price_mom, print_date, city, state,  = row.split(",")
 
         median_home_price = float(median_home_price)
+ 
 
-        city = City.query.filter(City.city_name == city).first()
-
-        if city:
+        city = City.query.filter((City.city_name == city) & (City.state == state)).first()
+  
+        if city and state:
 
             price = Price(
                         median_home_price=median_home_price,
