@@ -6,16 +6,17 @@
     <head>
     {% block title %}<title>One step closer</title>{% endblock %}
     <link rel="stylesheet" type="text/css" href="/static/styles.css"></head>
-    <h1>Search results placeholder </h1>
-    <h3> city_results </h3>
-    <h2>This is where the search results will populate once I figure out how to do that </h2>
+    <h1>Search results </h1>
+    <h3>  </h3>
+
+    <h2>Given your budget, here are some cities we think you should check out! </h2>
     
     {% for city in city_results %}
-    <h2>
+    <h4>
 
         {{city.city_name}}, {{city.state}} : Median home price is ${{city.prices[0].median_home_price}}
 
-    </h2>
+    </h4>
 
     {%endfor%}
 
@@ -24,6 +25,4 @@
     <br>
     <br>
    
-
-
 {% endblock %}

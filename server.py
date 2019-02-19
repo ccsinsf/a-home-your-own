@@ -46,8 +46,10 @@ def find_budget():
     city_results = (db.session
         .query(City)
         .join(Price)
-        .group_by(City.city_id)
+        # .group_by(City.city_id)
         .filter(Price.median_home_price <= max_price)
+        .order_by(Price.median_home_price.desc())
+        # Want to order by price in descending order so users see relevant data
         .all())
 
     print(city_results)
@@ -55,73 +57,7 @@ def find_budget():
     for city in city_results:
         print(f"{city.city_name}, {city.state} : Median home price is ${city.prices[0].median_home_price}")
 
-    # price_results = (db.session
-    #     .query(Price.median_home_price)
-    #     .join(City)
-    #     .group_by(Price.city_id)
-    #     .filter(City.city_name in city_results)
-    #     .all())
-
-    # print(price_results)
-
-    # for mhp in range(budget, max_price):
-    # #     #  find each median_home_price between budget and max budget and return
-    # #     #  and add that city_name (found on the cities table, in the City class,)
-    # #     #  to the list, city_results 
-
-    #     city_results = city_results.append(City.city_name)
-    
-
-    # Option: can index into each number, but since numbers can be 7 digits, will want to
-    # remove the back 3 digits
-
-    # price = price[:-3]
-
-    # This will return all but the last 3 digits 
-
-    # dollar = request.args.get[price]
-
-    # price = int(price)
-    # # Get the dollar amount that was entered in the input box called 'price' on homepage.html
-
-    # # price.strip('$','.',',', '-')
-    # # # Strip any non alphanumberical symbols, incase a user enters the $, ',', or decimal 
-
-    # # search_price = int(price)
-    # # # Convert the number to an integer 
-
-    # # # List slice the last 3 index positions 
-    # # narrow_search = search_price[:-3]
-
-    # print(price)
-    # print(price)
-
     return render_template("/get_price.html", city_results= city_results)
-
-# @app.route('/get-price', methods=['POST'])
-# def search():
-#     """When the user has entered a number into the search box and "submitted" it,
-#     process the form in this route"""
-    
-#     price = request.form.get['price']
-#     price = int(price)
-#     # Get the dollar amount that was entered in the input box called 'price' on homepage.html
-
-#     # price.strip('$','.',',', '-')
-#     # # Strip any non alphanumberical symbols, incase a user enters the $, ',', or decimal 
-
-#     # search_price = int(price)
-#     # # Convert the number to an integer 
-
-#     # # List slice the last 3 index positions 
-#     # narrow_search = search_price[:-3]
-
-#     print(price)
-#     print(price)
-
-#     return redirect("/get-price")
-
-    # need to index the search_price 
 
 
 # @app.route("/users")
