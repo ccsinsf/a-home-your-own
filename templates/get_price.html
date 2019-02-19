@@ -10,6 +10,14 @@
     <h3> city_results </h3>
     <h2>This is where the search results will populate once I figure out how to do that </h2>
     
+    {% for city in city_results %}
+    <h2>
+
+        {{city.city_name}}, {{city.state}} : Median home price is ${{city.prices[0].median_home_price}}
+
+    </h2>
+
+    {%endfor%}
 
     <img class="title-img" src="https://na.rdcpix.com/274937236/8ecb8b5c10a19ccbe1daba7bc38ec77cw-c317321xd-w685_h860_q80.jpg">
     

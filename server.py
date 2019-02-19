@@ -96,7 +96,7 @@ def find_budget():
     # print(price)
     # print(price)
 
-    return render_template("/get_price.html")
+    return render_template("/get_price.html", city_results= city_results)
 
 # @app.route('/get-price', methods=['POST'])
 # def search():
@@ -122,11 +122,6 @@ def find_budget():
 #     return redirect("/get-price")
 
     # need to index the search_price 
-
-
-
-
-
 
 
 # @app.route("/users")
