@@ -50,7 +50,7 @@ def find_budget():
         .filter(Price.median_home_price <= max_price)
         .order_by(Price.median_home_price.desc())
         # Want to order by price in descending order so users see relevant data
-        .all())
+        .limit(20))
 
     print(city_results)
 
