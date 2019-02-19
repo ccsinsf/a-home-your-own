@@ -4,7 +4,7 @@ from flask import (Flask, render_template, redirect, request, flash, session)
 from flask_debugtoolbar import DebugToolbarExtension
 
 from model import Price, City, connect_to_db, db
-# from utility_functions import find_budget
+from refactoring_queries import *
 
 
 app = Flask(__name__)
@@ -25,25 +25,44 @@ def index():
 
 @app.route('/get-price', methods=['GET', 'POST'])
 def find_budget():
-    """When the user has entered a number into the search box and "submitted" it,
-    process the form in this route"""
+    # """When the user has entered a number into the search box and "submitted" it,
+    # process the form in this route"""
 
     # For a given price, multiply that by 10% and set that as the "max price"
     # Return city_names that are between those amounts 
 
     budget = int(request.form.get('price'))
+    # Extract the user's budget ("price") from the form they submitted
 
-    print("Im debugging yayayayaya")
-    print(budget)
+    # -> error handling: if price negative, send error, alert message 
 
-    city_results = []
+    max_price = find_max_budget(budget)
+    # Max budget (upper limit) is 10% more than the user's input
 
-    max_price = budget + int(budget * .1)
+    debug_functions(budget)
+    # Show the user's budget in the console to make sure this part is running propperly
 
-# def find_cities_in_budget():
-# Find city by median house price (modeling off Skills5)
+    create_city_results_list()
+    # Instanciate an empty list to house the city results data
 
-    city_results = (db.session
+    city_results = find_cities_in_budget(max_price)
+    # Find the city by median home price (modeling off Skills Assessment 5)
+    # Return the top 20 closest matches to foster UX. These results will also be
+    # returned to the console 
+
+    get_city_objects(city_results)
+    # Render on the HTML page and console city_name, state, 
+    # city.prices[0].median_home_price.
+
+    return render_template("/get_price.html", city_results= city_results)
+
+
+# Will need to think more about this route and how it should function 
+@app.route("/citydetails")
+def show_city_details():
+    """Show details about a given city."""
+
+    city_details = (db.session
         .query(City)
         .join(Price)
         # .group_by(City.city_id)
@@ -51,19 +70,6 @@ def find_budget():
         .order_by(Price.median_home_price.desc())
         # Want to order by price in descending order so users see relevant data
         .limit(20))
-
-    print(city_results)
-
-    for city in city_results:
-        print(f"{city.city_name}, {city.state} : Median home price is ${city.prices[0].median_home_price}")
-
-    return render_template("/get_price.html", city_results= city_results)
-
-
-# @app.route("/users")
-# def user_list():
-#     """Show list of users."""
-
 #     users = User.query.all()
 #     return render_template("user_list.html", users=users)
 
