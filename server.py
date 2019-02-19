@@ -4,6 +4,7 @@ from flask import (Flask, render_template, redirect, request, flash, session)
 from flask_debugtoolbar import DebugToolbarExtension
 
 from model import Price, City, connect_to_db, db
+# from utility_functions import find_budget
 
 
 app = Flask(__name__)
@@ -23,7 +24,7 @@ def index():
     return render_template("homepage.html")
 
 @app.route('/get-price', methods=['GET', 'POST'])
-def search_results():
+def find_budget():
     """When the user has entered a number into the search box and "submitted" it,
     process the form in this route"""
 
@@ -32,68 +33,46 @@ def search_results():
 
     budget = int(request.form.get('price'))
 
+    print("Im debugging yayayayaya")
+    print(budget)
+
     city_results = []
 
     max_price = budget + int(budget * .1)
 
-    for price in range(budget, max_price):
-       city_results = city_results.append(City.city_name)
+# def find_cities_in_budget():
+# Find city by median house price (modeling off Skills5)
 
-    print(city_results)   
+    city_results = (db.session
+        .query(City)
+        .join(Price)
+        .group_by(City.city_id)
+        .filter(Price.median_home_price <= max_price)
+        .all())
 
-    #     elif price > 200000 and <= 250000:
-    #         city_results.append(City.city_name where median_home_price < 275000)
+    print(city_results)
 
-    #     elif price > 250000 and <= 275000:
-    #         city_results.append(City.city_name where median_home_price < 300000)
+    for city in city_results:
+        print(f"{city.city_name}, {city.state} : Median home price is ${city.prices[0].median_home_price}")
 
-    #     elif price > 275000 and <= 300000:
-    #         city_results.append(City.city_name where median_home_price < 325000)
+    # price_results = (db.session
+    #     .query(Price.median_home_price)
+    #     .join(City)
+    #     .group_by(Price.city_id)
+    #     .filter(City.city_name in city_results)
+    #     .all())
 
-    #     elif price > 300000 and <= 325000:
-    #         city_results.append(City.city_name where median_home_price < 350000)
+    # print(price_results)
 
-    #     elif  price > 325000 and <= 350000
-    #         city_results.append(City.city_name where median_home_price < 375000)
+    # for mhp in range(budget, max_price):
+    # #     #  find each median_home_price between budget and max budget and return
+    # #     #  and add that city_name (found on the cities table, in the City class,)
+    # #     #  to the list, city_results 
 
-    #     elif price > 350000 and <= 375000:
-    #         city_results.append(City.city_name where median_home_price < 400000)
+    #     city_results = city_results.append(City.city_name)
+    
 
-    #     elif price > 375000 and <= 400000:
-    #         city_results.append(City.city_name where median_home_price < 415000) 
-
-    #     elif price > 400000 and <= 415000:
-    #         city_results.append(City.city_name where median_home_price < 425000)
-
-    #     elif price > 415000 and <= 430000:
-    #         city_results.append(City.city_name where median_home_price < 450000)
-
-    #     elif price > 430000 and <= 450000:
-    #         city_results.append(City.city_name where median_home_price < 460000)
-
-    #     elif price > 455000 and <= 475000:
-    #         city_results.append(City.city_name where median_home_price < 485000)
-
-    #     elif price > 475000 and <= 500000:
-    #         city_results.append(City.city_name where median_home_price < 525000)
-
-    #     elif price > 500000 and <= 650000:
-    #         city_results.append(City.city_name where median_home_price < 700000)
-
-    #     elif price > 650000 and <= 800000:
-    #         city_results.append(City.city_name where median_home_price < 1000000)
-
-    #     if price > 800000 and <= 1500000:
-    #         city_results.append(City.city_name where median_home_price < 2000000)
-
-
-    # else: 
-    #     return "We don't have data for homes in this range yet!"    
-
-    # Problem with this^ : Will need to include a limit on the results to show 
-    # homes in this RANGE 
-
-    # will need to index into each number, but since numbers can be 7 digits, will want to
+    # Option: can index into each number, but since numbers can be 7 digits, will want to
     # remove the back 3 digits
 
     # price = price[:-3]
