@@ -3,25 +3,48 @@
 {% block content %}
 
     <head>
-    {% block title %}<title>One step closer</title>{% endblock %}
-    <link rel="stylesheet" type="text/css" href="/static/styles.css"></head>
-    <h1>Search results
-
     <meta charset='utf-8' />
     <title></title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'> </script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
 
-    </h1>
-    <h3>  </h3>
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+        .marker {
+      background-image: url('mapbox-icon.png');
+      background-size: cover;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      }
+      .mapboxgl-popup {
+        max-width: 200px;
+      }
+
+      .mapboxgl-popup-content {
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+      }
+    </style>
+</head>
 
     <h2>Given your budget, here are some cities we think you should check out! </h2>
     
     <body>
         
-    <div id='map' style='width: 700px; height: 500px;'></div>
+    <div id='map' style='width: 1000px; height: 550px;'></div>
     <script>
 
 
@@ -30,9 +53,72 @@
     var map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/light-v10',
-      center: [-96, 37.8],
+      center: [-96, 37.8], 
+      // Longitude, latitude 
       zoom: 3
     });
+    
+var geojson = {
+  type: 'FeatureCollection',
+  features: [{
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-77.032, 38.913]
+    },
+    properties: {
+      title: 'Median home price: $XXXXXXX',
+      description: 'Washington, D.C.'
+    }
+  },
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-122.414, 37.776]
+    },
+    properties: {
+      title: 'Mapbox',
+      description: 'San Francisco, California'
+    }
+  }]
+};
+
+  geojson.features.forEach(function(marker) {
+
+    // create a HTML element for each feature
+    var el = document.createElement('div');
+    el.className = 'marker';
+
+    // make a marker for each feature and add to the map
+    new mapboxgl.Marker(el)
+      .setLngLat(marker.geometry.coordinates)
+      new mapboxgl.Marker(el)
+        .setLngLat(marker.geometry.coordinates)
+        .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+          .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
+        
+      .addTo(map);
+  });
+
+    let cityLocations = JSON.parse('{{ cityLocations|safe }}')
+
+    let features = []
+
+    for (let i = 0; i < city.length; i++) {                               
+            let details = {
+               "type": "Feature",
+               "properties": { 
+                    title: 'Median Home Price: '
+                    description: 'city.city_name'
+               },
+               "geometry": {
+               "type": "Point",
+               "coordinates": [parseFloat(longitude), parseFloat(latitude)]
+               }
+               }
+           features.push(details)
+       }
 
     // code from the next step will go here!
 

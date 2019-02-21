@@ -61,19 +61,23 @@ def results_map():
     """JSON infomration about the search results map"""
 
     get_city_objects(city_results)
+    # Call the previous function so that you have those specific cities
 
-    city_location = {
-        city.marker_id: {
-            "cityLat": city.latitude,
-            "cityLong": city.longitude
-            .all()
-    }
+    longitude = city.longitude
+
+    latitude = city.latitude
+
+    city_locations = {"longitude": longitude, "latitude": latitude}
+
+    
+    return render_template("/get_price.html", cityLocations = JSON.dumps(city_locations))
+
+
 
     # Need to pass in city_results so that the right pins show up 
 
-    for city in city_results.limit(20)}
-
-    return json.dumps(city_location)    
+    # for city in city_results.limit(20):
+    #     return json.dumps(cityLocation)    
 
 
 
