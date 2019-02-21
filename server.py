@@ -73,7 +73,7 @@ def results_map():
 
     for city in city_results.limit(20)}
 
-return json.dumps(city_location)    
+    return json.dumps(city_location)    
 
 
 

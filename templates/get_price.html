@@ -7,10 +7,12 @@
     <link rel="stylesheet" type="text/css" href="/static/styles.css"></head>
     <h1>Search results
 
-    <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
-    
-    <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
-
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
 
     </h1>
     <h3>  </h3>
@@ -19,9 +21,9 @@
     
     <body>
         
-    <div id='map' style='width: 600px; height: 400px;'></div>
+    <div id='map' style='width: 700px; height: 500px;'></div>
     <script>
-    <script>
+
 
     mapboxgl.accessToken = 'pk.eyJ1IjoiY2NzaW5zZiIsImEiOiJjanNjZHY2bm8wMTh1M3lud3U3M3lzZDhkIn0.r560K1qwtE2hq9VkHoUM5A';
 
@@ -30,9 +32,11 @@
       style: 'mapbox://styles/mapbox/light-v10',
       center: [-96, 37.8],
       zoom: 3
-   
-
     });
+
+    // code from the next step will go here!
+
+
     </script>
 
     </body>
