@@ -1,11 +1,10 @@
 from jinja2 import StrictUndefined
 
-from flask import (Flask, render_template, redirect, request, flash, session)
+from flask import (Flask, render_template, redirect, request, flash,jsonify, session)
 from flask_debugtoolbar import DebugToolbarExtension
 
 from model import Price, City, connect_to_db, db
 from refactoring_queries import *
-
 
 app = Flask(__name__)
 
@@ -55,6 +54,28 @@ def find_budget():
     # city.prices[0].median_home_price.
 
     return render_template("/get_price.html", city_results= city_results)
+
+
+@app.route('/results_map.json')
+def results_map():
+    """JSON infomration about the search results map"""
+
+    get_city_objects(city_results)
+
+    city_location = {
+        city.marker_id: {
+            "cityLat": city.latitude,
+            "cityLong": city.longitude
+            .all()
+    }
+
+    # Need to pass in city_results so that the right pins show up 
+
+    for city in city_results.limit(20)}
+
+return json.dumps(city_location)    
+
+
 
 
 # Will need to think more about this route and how it should function 

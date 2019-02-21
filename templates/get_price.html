@@ -13,8 +13,29 @@
 
 
     </h1>
+    <h3>  </h3>
 
     <h2>Given your budget, here are some cities we think you should check out! </h2>
+    
+    <body>
+        
+    <div id='map' style='width: 600px; height: 400px;'></div>
+    <script>
+    <script>
+
+    mapboxgl.accessToken = 'pk.eyJ1IjoiY2NzaW5zZiIsImEiOiJjanNjZHY2bm8wMTh1M3lud3U3M3lzZDhkIn0.r560K1qwtE2hq9VkHoUM5A';
+
+    var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/light-v10',
+      center: [-96, 37.8],
+      zoom: 3
+   
+
+    });
+    </script>
+
+    </body>
 
     {% for city in city_results %}
     <h4>
@@ -24,68 +45,6 @@
     </h4>
 
     {%endfor%}
-
-    
-    <br>
-    <br>
-    <style>
- <span class="metadata-marker" style="display: none;" data-region_tag="css"></span>      /* Set the size of the div element that contains the map */
-      #map {
-        height: 400px;  /* The height is 400 pixels */
-        width: 100%;  /* The width is the width of the web page */
-       }
-    </style>
-  </head>
-    
-    <body>
-<span class="metadata-marker" style="display: none;" data-region_tag="html-body"></span>    <h3>My Google Maps Demo</h3>
-    <!--The div element for the map -->
-    <div id="map"></div>
-    <script>
-<span class="metadata-marker" style="display: none;" data-region_tag="script-body"></span>// Initialize and add the map
-function initMap() {
-  // The location of Uluru
-  var uluru = {lat: -25.344, lng: 131.036};
-  // The map, centered at Uluru
-  var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 4, center: uluru});
-  // The marker, positioned at Uluru
-  var marker = new google.maps.Marker({position: uluru, map: map});
-}
-    </script>
-    <!--Load the API from the specified URL
-    * The async attribute allows the browser to render the page while the API loads
-    * The key parameter will contain your own API key (which is not needed for this tutorial)
-    * The callback parameter executes the initMap() function
-    -->
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7wkc5Dp4xpXbfKZDWCnAHcbEIdKhqyzI&callback=initMap">
-    </script>
-
-</body>
-
-        
-   <!--  <div id='map' style='width: 600px; height: 400px;'></div>
-    <script>
-    mapboxgl.accessToken =
-        'pk.eyJ1IjoiY2NzaW5zZiIsImEiOiJjanNjZHY2bm8wMTh1M3lud3U3M3lzZDhkIn0.r560K1qwtE2hq9VkHoUM5A';
-    var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11'
-
-    });
-    </script>
-
-    </body> -->
-
-  <!--   {% for city in city_results %}
-    <h4>
-
-        {{city.city_name}}, {{city.state}} : Median home price is ${{city.prices[0].median_home_price}}
-
-    </h4>
-
-    {%endfor%} -->
 
     <img class="title-img" src="https://na.rdcpix.com/274937236/8ecb8b5c10a19ccbe1daba7bc38ec77cw-c317321xd-w685_h860_q80.jpg">
     
