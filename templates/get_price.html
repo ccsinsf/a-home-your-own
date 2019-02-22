@@ -47,7 +47,6 @@
     <div id='map' style='width: 1000px; height: 550px;'></div>
     <script>
 
-
     mapboxgl.accessToken = 'pk.eyJ1IjoiY2NzaW5zZiIsImEiOiJjanNjZHY2bm8wMTh1M3lud3U3M3lzZDhkIn0.r560K1qwtE2hq9VkHoUM5A';
 
     var map = new mapboxgl.Map({
@@ -84,6 +83,27 @@
       }]
     };
 
+    let cityLocations = JSON.parse('[cityLocations|safe]')
+    
+    console.log(cityLocations)
+
+    let features = []
+
+    for (let i = 0; i < city.length; i++) {                               
+            let details = {
+               "type": "Feature",
+               "properties": { 
+                    title: 'Median Home Price: '
+                    // description: city_name
+               },
+               "geometry": {
+               "type": "Point",
+               "coordinates": [parseFloat(longitude), parseFloat(latitude)]
+               }
+               }
+           features.push(details)
+       }
+
       geojson.features.forEach(function(marker) {
 
         // create a HTML element for each feature
@@ -101,24 +121,8 @@
           .addTo(map);
       });
 
-    let cityLocations = JSON.parse('{{ cityLocations|safe }}')
 
-    let features = []
 
-    for (let i = 0; i < city.length; i++) {                               
-            let details = {
-               "type": "Feature",
-               "properties": { 
-                    title: 'Median Home Price: '
-                    // description: 'city.city_name'
-               },
-               "geometry": {
-               "type": "Point",
-               "coordinates": [parseFloat(longitude), parseFloat(latitude)]
-               }
-               }
-           features.push(details)
-       }
 
     // code from the next step will go here!
 

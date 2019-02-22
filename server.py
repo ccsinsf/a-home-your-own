@@ -57,12 +57,11 @@ def find_budget():
         city_name = city.city_name
         city_id = city.city_id
 
-        cityLocations.append((longitude, latitude, city_id, city_name))
+        cityLocations.append((longitude, latitude, city_name, city_id))
 
     print("debug 2")
     print(cityLocations)
     # This is working ^ 
-
 
     pp_city_objects(city_results)
     # Render on the HTML page and console city_name, state, 
