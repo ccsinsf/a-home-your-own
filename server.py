@@ -66,10 +66,6 @@ def find_budget():
             "city_name": city_name, 
             "city_id": city_id 
             })
-        
-
-
-
 
 
     print("debug 2")

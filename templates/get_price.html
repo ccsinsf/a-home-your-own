@@ -22,7 +22,7 @@
         width: 100%;
       }
         .marker {
-      background-image: url('mapbox-icon.png');
+      background-image: url('../static/mapbox-icon.png');
       background-size: cover;
       width: 50px;
       height: 50px;
@@ -42,7 +42,7 @@
 
     <h2>Given your budget, here are some cities we think you should check out! </h2>
     
-    <body>
+<body>
         
     <div id='map' style='width: 1000px; height: 550px;'></div>
     <script>
@@ -56,6 +56,39 @@
       // Longitude, latitude 
       zoom: 3
     });
+
+    let cityLocations = JSON.parse({{ cityLocations | tojson }});
+
+    let features = [];
+
+    for (const location of cityLocations) {
+        let details = {
+            type: "Feature",
+            properties: { 
+                "title": location.city_name,
+                "description": 'Median Home Price: '
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    parseFloat(location.longitude),
+                    parseFloat(location.latitude)
+                ]
+            }
+        };
+    
+    features.push(details)
+}
+    console.log(features.geometry);
+
+    var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/light-v10',
+      center: [-96, 37.8], 
+      // Longitude, latitude 
+      zoom: 3
+    });
+
     
     var geojson = {
       type: 'FeatureCollection',
@@ -66,8 +99,8 @@
           coordinates: [-77.032, 38.913]
         },
         properties: {
-          title: 'Median home price: $XXXXXXX',
-          description: 'Washington, D.C.'
+          title: 'feature[16].properties.title',
+          description: 'Median Home Price:'
         }
       },
       {
@@ -83,30 +116,10 @@
       }]
     };
 
-    let cityLocations = JSON.parse({{ cityLocations | tojson }});
-
-    let features = [];
-
-    for (const location of cityLocations) {
-        let details = {
-            type: "Feature",
-            properties: { 
-                "title": 'Median Home Price: ',
-                "description": location.city_name
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    parseFloat(location.longitude),
-                    parseFloat(location.latitude)
-                ]
-            }
-        };
-        
-        features.push(details)
-    }
 
     console.log(features);
+
+    //add markers to map
 
       geojson.features.forEach(function(marker) {
 
@@ -124,12 +137,6 @@
             
           .addTo(map);
       });
-
-
-
-
-    // code from the next step will go here!
-
 
     </script>
 
