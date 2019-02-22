@@ -83,26 +83,30 @@
       }]
     };
 
-    let cityLocations = JSON.parse('[cityLocations|safe]')
-    
-    console.log(cityLocations)
+    let cityLocations = JSON.parse({{ cityLocations | tojson }});
 
-    let features = []
+    let features = [];
 
-    for (let i = 0; i < city.length; i++) {                               
-            let details = {
-               "type": "Feature",
-               "properties": { 
-                    title: 'Median Home Price: '
-                    // description: city_name
-               },
-               "geometry": {
-               "type": "Point",
-               "coordinates": [parseFloat(longitude), parseFloat(latitude)]
-               }
-               }
-           features.push(details)
-       }
+    for (const location of cityLocations) {
+        let details = {
+            type: "Feature",
+            properties: { 
+                "title": 'Median Home Price: ',
+                "description": location.city_name
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    parseFloat(location.longitude),
+                    parseFloat(location.latitude)
+                ]
+            }
+        };
+        
+        features.push(details)
+    }
+
+    console.log(features);
 
       geojson.features.forEach(function(marker) {
 

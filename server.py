@@ -1,10 +1,12 @@
 from jinja2 import StrictUndefined
 
-from flask import (Flask, render_template, redirect, request, flash, jsonify, session)
+from flask import (Flask, render_template, redirect, request, flash, session)
 from flask_debugtoolbar import DebugToolbarExtension
 
 from model import Price, City, connect_to_db, db
 from refactoring_queries import *
+
+import json 
 
 app = Flask(__name__)
 
@@ -57,17 +59,55 @@ def find_budget():
         city_name = city.city_name
         city_id = city.city_id
 
-        cityLocations.append((longitude, latitude, city_name, city_id))
+
+        cityLocations.append({
+            "longitude" : longitude,
+            "latitude": latitude,
+            "city_name": city_name, 
+            "city_id": city_id 
+            })
+        
+
+
+
+
 
     print("debug 2")
-    print(cityLocations)
+    # print(cityLocations)
     # This is working ^ 
+
+    print("Debugging 3: This is right before def get_mapbox_json")
+
+# def get_mapbox_json(city_results):
+
+#     mapbox_json = {} 
+
+#     for city in city_results:
+#         details = { 
+#             "type" : "Feature",
+#             "properties": { 
+#                 "title": 'city.city_name',
+#                 "description":'median_home_price'
+#             }
+#             # "geography": {
+#             #  "type": "Point",
+#             #  "coordinates": [city.longitude, city.latitude]
+#             #  }
+#         }
+
+#         #  need to add these values to my dictionary
+
+#     print(mapbox_json)
+    # x = "placeholder"
+    # return (x)
 
     pp_city_objects(city_results)
     # Render on the HTML page and console city_name, state, 
     # city.prices[0].median_home_price.
-    print("**debug3")
-    return render_template("/get_price.html", city_results= city_results, cityLocations= jsonify(cityLocations))
+    print("**debug4")
+    return render_template("/get_price.html", city_results= city_results, cityLocations= json.dumps(cityLocations))
+
+# def get_mapbox_json(cities):
 
 
 # @app.route('/results_map.json')
