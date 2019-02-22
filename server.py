@@ -57,18 +57,20 @@ def find_budget():
         longitude = city.longitude
         latitude = city.latitude
         city_name = city.city_name
+        state = city.state
         city_id = city.city_id
 
 
         cityLocations.append({
             "longitude" : longitude,
             "latitude": latitude,
-            "city_name": city_name, 
+            "city_name": city_name,
+            "state": state, 
             "city_id": city_id 
             })
 
 
-    print("debug 2")
+    print(cityLocations)
     # print(cityLocations)
     # This is working ^ 
 

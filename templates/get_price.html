@@ -65,8 +65,8 @@
         let details = {
             type: "Feature",
             properties: { 
-                "title": location.city_name,
-                "description": 'Median Home Price: '
+                "title": location.city_name, 
+                "description": location.state,
             },
             "geometry": {
                 "type": "Point",
@@ -88,7 +88,6 @@
       // Longitude, latitude 
       zoom: 3
     });
-
     
     var geojson = {
       type: 'FeatureCollection',
@@ -96,24 +95,223 @@
         type: 'Feature',
         geometry: {
           type: 'Point',
-          coordinates: [-77.032, 38.913]
+          coordinates: features[0].geometry.coordinates
         },
         properties: {
-          title: 'feature[16].properties.title',
-          description: 'Median Home Price:'
+          title: features[0].properties.title,
+          description: features[0].properties.description
         }
       },
       {
         type: 'Feature',
         geometry: {
           type: 'Point',
-          coordinates: [-122.414, 37.776]
+          coordinates: features[1].geometry.coordinates
         },
         properties: {
-          title: 'Mapbox',
-          description: 'San Francisco, California'
+          title: features[1].properties.title,
+          description: features[1].properties.description,
         }
-      }]
+      },
+      {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: features[2].geometry.coordinates
+        },
+        properties: {
+          title: features[2].properties.title,
+          description: features[2].properties.description
+        }
+      },
+      {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: features[3].geometry.coordinates
+        },
+        properties: {
+          title: features[3].properties.title,
+          description: features[3].properties.description
+        }
+      },
+      {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: features[4].geometry.coordinates
+        },
+        properties: {
+          title: features[4].properties.title,
+          description: features[4].properties.description
+        }
+      },
+      {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: features[5].geometry.coordinates
+        },
+        properties: {
+          title: features[5].properties.title,
+          description: features[5].properties.description
+        }
+      },
+      {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: features[6].geometry.coordinates
+        },
+        properties: {
+          title: features[6].properties.title,
+          description: features[6].properties.description
+        }
+      },
+      {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: features[7].geometry.coordinates
+        },
+        properties: {
+          title: features[7].properties.title,
+          description: features[7].properties.description
+        }
+      },
+      {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: features[8].geometry.coordinates
+        },
+        properties: {
+          title: features[8].properties.title,
+          description: features[8].properties.description
+        }
+      },
+      {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: features[9].geometry.coordinates
+        },
+        properties: {
+          title: features[9].properties.title,
+          description: features[9].properties.description,
+        }
+      },
+      {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: features[10].geometry.coordinates
+        },
+        properties: {
+          title: features[10].properties.title,
+          description: features[10].properties.description,
+        }
+      },
+      {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: features[11].geometry.coordinates
+        },
+        properties: {
+          title: features[11].properties.title,
+          description: features[11].properties.description,
+        }
+      },
+      {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: features[12].geometry.coordinates
+        },
+        properties: {
+          title: features[12].properties.title,
+          description: features[12].properties.description,
+        }
+      },
+      {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: features[13].geometry.coordinates
+        },
+        properties: {
+          title: features[13].properties.title,
+          description: features[13].properties.description
+        }
+      },
+      {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: features[14].geometry.coordinates
+        },
+        properties: {
+          title: features[14].properties.title,
+          description: features[14].properties.description
+        }
+      },                                                                        
+      {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: features[15].geometry.coordinates
+        },
+        properties: {
+          title: features[15].properties.title,
+          description: features[15].properties.description
+        }
+      },
+      {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: features[16].geometry.coordinates
+        },
+        properties: {
+          title: features[16].properties.title,
+          description: features[16].properties.description
+        }
+      },
+      {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: features[17].geometry.coordinates
+        },
+        properties: {
+          title: features[17].properties.title,
+          description: features[17].properties.description
+        }
+      },
+      {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: features[18].geometry.coordinates
+        },
+        properties: {
+          title: features[18].properties.title,
+          description: features[18].properties.description
+        }
+      },
+      {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: features[19].geometry.coordinates
+        },
+        properties: {
+          title: features[19].properties.title,
+          description: features[19].properties.description
+        }
+      },                                   
+      ]
     };
 
 
