@@ -49,7 +49,7 @@ def find_cities_in_budget(max_price):
 
     return(city_results)
 
-def get_city_objects(city_results):
+def pp_city_objects(city_results):
 
     for city in city_results:
         print(f"{city.city_name}, {city.state} : Median home price is ${city.prices[0].median_home_price}")

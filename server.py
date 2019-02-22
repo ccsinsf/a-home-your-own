@@ -1,6 +1,6 @@
 from jinja2 import StrictUndefined
 
-from flask import (Flask, render_template, redirect, request, flash,jsonify, session)
+from flask import (Flask, render_template, redirect, request, flash, jsonify, session)
 from flask_debugtoolbar import DebugToolbarExtension
 
 from model import Price, City, connect_to_db, db
@@ -49,28 +49,47 @@ def find_budget():
     # Return the top 20 closest matches to foster UX. These results will also be
     # returned to the console 
 
-    get_city_objects(city_results)
+    cityLocations= []
+    print("**debug**")
+    for city in city_results:
+        longitude = city.longitude
+        latitude = city.latitude
+        city_name = city.city_name
+        city_id = city.city_id
+
+        cityLocations.append((longitude, latitude, city_id, city_name))
+
+    print("debug 2")
+    print(cityLocations)
+    # This is working ^ 
+
+
+    pp_city_objects(city_results)
     # Render on the HTML page and console city_name, state, 
     # city.prices[0].median_home_price.
+    print("**debug3")
+    return render_template("/get_price.html", city_results= city_results, cityLocations= jsonify(cityLocations))
 
-    return render_template("/get_price.html", city_results= city_results)
+
+# @app.route('/results_map.json')
+# def results_map():
+#     """JSON infomration about the search results map"""
+
+#     city_locations = { 
+#                 "city_id" :("longitude": longitude, "latitude": latitude)}
+
+#     # Call the previous function so that you have those specific cities^
 
 
-@app.route('/results_map.json')
-def results_map():
-    """JSON infomration about the search results map"""
+#         # append to dictionary over each iteration
 
-    get_city_objects(city_results)
-    # Call the previous function so that you have those specific cities
+#     print("***ONE****")
+   
+#     print("****TwO***")
+#     print(JSON.dumps(city_locations))
 
-    longitude = city.longitude
-
-    latitude = city.latitude
-
-    city_locations = {"longitude": longitude, "latitude": latitude}
-
-    
-    return render_template("/get_price.html", cityLocations = JSON.dumps(city_locations))
+#     print("****THREE***")
+#     return render_template("/get_price.html", cityLocations = JSON.dumps(city_locations))
 
 
 
