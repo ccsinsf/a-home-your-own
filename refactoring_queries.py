@@ -27,7 +27,6 @@ def find_max_budget(budget):
     return(max_price)
 
 def debug_functions(budget):
-    print("Im debugging yayayayaya")
     print(budget)
 
 def create_city_results_list():
