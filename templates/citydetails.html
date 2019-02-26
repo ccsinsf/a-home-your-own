@@ -1,12 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
 
-  <h1>City Details</h1>
+<head>City Details</head>
 
-  City name: {{ City.city_name }} <br>
-  State: {{ City.state }} <br>
-  Median home price: {{ Price.median_home_price }} <br>
-  Month-over-month sales price trend: {{ Price.sales_price_mom }} <br>
+  <title>City Details</title>
+
+  <p>
+
+    placeholder for some cool stuff 
+    <!-- When its just this^ it works -->
+
+    {% for city in city_details %}
+
+    City name: {{ City.city_name }} <br>
+    State: {{ City.state }} <br>
+    Median home price: {{ Price.median_home_price }} <br>
+    Month-over-month sales price trend: {{ Price.sales_price_mom }}<br> 
+
+    {% endfor%} 
+  </p>
 
 {% endblock %}
 

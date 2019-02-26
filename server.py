@@ -76,72 +76,22 @@ def find_budget():
 
     print("Debugging 3: This is right before def get_mapbox_json")
 
-# def get_mapbox_json(city_results):
-
-#     mapbox_json = {} 
-
-#     for city in city_results:
-#         details = { 
-#             "type" : "Feature",
-#             "properties": { 
-#                 "title": 'city.city_name',
-#                 "description":'median_home_price'
-#             }
-#             # "geography": {
-#             #  "type": "Point",
-#             #  "coordinates": [city.longitude, city.latitude]
-#             #  }
-#         }
-
-#         #  need to add these values to my dictionary
-
-#     print(mapbox_json)
-    # x = "placeholder"
-    # return (x)
-
     pp_city_objects(city_results)
     # Render on the HTML page and console city_name, state, 
     # city.prices[0].median_home_price.
     print("**debug4")
     return render_template("/get_price.html", city_results= city_results, cityLocations= json.dumps(cityLocations))
 
-# def get_mapbox_json(cities):
-
-
-# @app.route('/results_map.json')
-# def results_map():
-#     """JSON infomration about the search results map"""
-
-#     city_locations = { 
-#                 "city_id" :("longitude": longitude, "latitude": latitude)}
-
-#     # Call the previous function so that you have those specific cities^
-
-
-#         # append to dictionary over each iteration
-
-#     print("***ONE****")
-   
-#     print("****TwO***")
-#     print(JSON.dumps(city_locations))
-
-#     print("****THREE***")
-#     return render_template("/get_price.html", cityLocations = JSON.dumps(city_locations))
-
-
-
-    # Need to pass in city_results so that the right pins show up 
-
-    # for city in city_results.limit(20):
-    #     return json.dumps(cityLocation)    
-
-
-
+    
 
 # Will need to think more about this route and how it should function 
 @app.route("/citydetails")
 def show_city_details():
     """Show details about a given city."""
+
+    find_budget()
+
+    max_price = budget + int(budget * .1)
 
     city_details = (db.session
         .query(City)
@@ -151,8 +101,10 @@ def show_city_details():
         .order_by(Price.median_home_price.desc())
         # Want to order by price in descending order so users see relevant data
         .limit(20))
-#     users = User.query.all()
-#     return render_template("user_list.html", users=users)
+    
+    print ("debug5")
+    return render_template("/citydetails.html", city_details= city_details)
+
 
 
 if __name__ == "__main__":
