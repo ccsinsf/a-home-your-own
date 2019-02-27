@@ -1,32 +1,89 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<head> {{ city.city_id }} Details </head>
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'> </script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
 
+      #map {
+        position: relative;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+        .marker {
+      background-image: url('../static/mapbox-icon.png');
+      background-size: cover;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      }
+      .mapboxgl-popup {
+        max-width: 200px;
+      }
+
+      .mapboxgl-popup-content {
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+      }
+    </style>
+</head>
+
+
+<h1>
+ Welcome to {{city_objects[0].city_name}}, {{city_objects[0].state}} </head>
+</h1>
+ <body>
+        
+    <div id='map' style='width: 1000px; height: 550px;'></div>
+    <script>
+
+    mapboxgl.accessToken = 'pk.eyJ1IjoiY2NzaW5zZiIsImEiOiJjanNjZHY2bm8wMTh1M3lud3U3M3lzZDhkIn0.r560K1qwtE2hq9VkHoUM5A';
+
+    var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/light-v10',
+      center: [{{city_objects[0].longitude}}, {{city_objects[0].latitude}}], 
+      // Longitude, latitude 
+      zoom: 11
+    });
+
+</script>
   <title>City Details</title>
 
   <h4>
-    
-    <!-- When its just this^ it works -->
 
-    {% for city  at city_id  %}
+    City name: {{city_objects[0].city_name}} <br>
+    State: {{city_objects[0].state}}  <br>
+    Median home price: {{city_objects[0].prices[0].median_home_price}}  <br>
+    Month-over-month sales price trend: {{city_objects[0].prices[0].sales_price_mom}} <br> <br> 
 
-    "City name": {{ city.city_name }} <br>
-    "State": {{ city.state }} <br>
-    "Median home price": {{ city.prices[0].median_home_price }} <br>
-    "Month-over-month sales price trend": {{ city.prices[0].sales_price_mom }}<br> <br> <br>
+</h4>
 
-    {% endfor%} 
-  </h4>
+    if {{city_objects[0].prices[0].sales_price_mom}} > 0, the market is hot! If possible, wait until the fall to purchase a home. 
+
+    <br>
+    <br>
+    <br>
+
+    if {{city_objects[0].prices[0].sales_price_mom}} < 0, the market is cold. Sales prices are declining and are likely to continue to decline through the winter. Now would be a great time to make an offer! 
+
+    <br>
+    <br>
+    <br>
+  
 
 {% endblock %}
 
 <!-- look at ratings lab movie details and user details  -->
 <!-- 
-<ul>
-  {% for city in city_details %}
-    <li>
-      <a href="/city_details/{{ city.city_id }}">{{ city.city_name }}</a>
-    </li>
-  {% endfor %}
-  </ul> -->

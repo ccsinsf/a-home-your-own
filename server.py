@@ -93,20 +93,28 @@ def show_city_details(city_id):
 
 # similar to {city.prices[0].median_home_price}
     
-    city_objects = City.query.filter_by(city_id=city_id).one()
+    city_objects = City.query.filter_by(city_id=city_id).all()
 
-    for city_object in city_objects:
-        city_name = city_object.city_name,
-        state = city_object.state,
-        median_home_price = city_object.prices[0].median_home_price,
-        sales_price_mom= city_object.prices[0].sales_price_mom
+    print(city_objects)
+    # This works 
 
-    return (city_object)
+    # city_details = []
+    
+    # city_details.append( {
+    # "city_name" : city_objects.city_name,
+    # "state": city_objects.state,
+    # "median_home_price":  city_objects.prices[0].median_home_price,
+    # "sales_price_mom": city_objects.prices[0].sales_price_mom
+    # })
 
+    # city_details = city_details.__dict__
+
+
+    # print(city_details)
     # filter(city_id = city_id)
     
     print ("debug5")
-    return render_template("/citydetails.html", city_object= city_object)
+    return render_template("/citydetails.html", city_objects= city_objects)
 
 
 
