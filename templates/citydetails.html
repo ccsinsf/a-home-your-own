@@ -65,18 +65,40 @@
 
     City name: {{city_objects[0].city_name}} <br>
     State: {{city_objects[0].state}}  <br>
-    Median home price: {{city_objects[0].prices[0].median_home_price}}  <br>
-    Month-over-month sales price trend: {{city_objects[0].prices[0].sales_price_mom}} <br> <br> 
+    Median home price: ${{city_objects[0].prices[0].median_home_price}}  <br>
+    Month-over-month sales price trend: {{city_objects[0].prices[0].sales_price_mom}} <br>
+    <br>
+    
+    <br> <br> 
 
 </h4>
-
-    if {{city_objects[0].prices[0].sales_price_mom}} > 0, the market is hot! If possible, wait until the fall to purchase a home. 
+<p>
+  If {{city_objects[0].prices[0].sales_price_mom}} > 0, the market is hot! If possible, wait until the fall to purchase a home. 
 
     <br>
     <br>
-    <br>
+    
 
-    if {{city_objects[0].prices[0].sales_price_mom}} < 0, the market is cold. Sales prices are declining and are likely to continue to decline through the winter. Now would be a great time to make an offer! 
+  If {{city_objects[0].prices[0].sales_price_mom}} < 0, the market is cold. Sales prices are declining and are likely to continue to decline through the winter. Now would be a great time to make an offer! 
+  <br>
+  <br>
+  <br>
+
+Now that you know a little about {{city_objects[0].city_name}}, below are a few helpful tools to help you along the way! 
+
+  <br>
+  <br>
+  
+Already own a home? Get an offer and browse homes with <a href="https://www.opendoor.com/" title="Get an offer through Opendoor">Opendoor</a>!
+  <br>
+  <br>
+
+Explore more of the neighborhood with <a href="http://www.zillow.com/homes/{{city_objects[0].city_name}}/" title="Browse what's in your budget">Zillow</a>. 
+
+
+</p>
+
+  
 
     <br>
     <br>

@@ -116,6 +116,11 @@ def show_city_details(city_id):
     print ("debug5")
     return render_template("/citydetails.html", city_objects= city_objects)
 
+@app.route("/citydetails/<city_id>")
+def redirect_to_zillow(city_name):
+    
+    return redirect("http://www.google.com")
+
 
 
 if __name__ == "__main__":
