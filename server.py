@@ -89,15 +89,12 @@ def find_budget():
 def show_city_details():
     """Show details about a given city."""
 
-    find_budget()
-
-    max_price = budget + int(budget * .1)
 
     city_details = (db.session
         .query(City)
         .join(Price)
         # .group_by(City.city_id)
-        .filter(Price.median_home_price <= max_price)
+        .filter(Price.median_home_price <10000000)
         .order_by(Price.median_home_price.desc())
         # Want to order by price in descending order so users see relevant data
         .limit(20))
