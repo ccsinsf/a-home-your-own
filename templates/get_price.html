@@ -130,7 +130,7 @@
 
         {{city.city_name}}, {{city.state}} : Median home price is ${{city.prices[0].median_home_price}}
 
-    <input type="button" onclick="location.href='/citydetails';" value="Learn More" />
+    <input type="button" onclick=location.href="/citydetails/{{ city.city_id }}" value="Learn More" />
 
     </h4>
 
@@ -141,6 +141,7 @@
     <br>
     <br>
    
+
 
 
 {% endblock %}

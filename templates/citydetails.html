@@ -1,16 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<head>City Details</head>
+<head> {{ city.city_id }} Details </head>
 
   <title>City Details</title>
 
   <h4>
-
     
     <!-- When its just this^ it works -->
 
-    {% for city in city_details %}
+    {% for city  at city_id  %}
 
     "City name": {{ city.city_name }} <br>
     "State": {{ city.state }} <br>
@@ -23,3 +22,11 @@
 {% endblock %}
 
 <!-- look at ratings lab movie details and user details  -->
+<!-- 
+<ul>
+  {% for city in city_details %}
+    <li>
+      <a href="/city_details/{{ city.city_id }}">{{ city.city_name }}</a>
+    </li>
+  {% endfor %}
+  </ul> -->

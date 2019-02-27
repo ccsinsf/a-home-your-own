@@ -85,22 +85,28 @@ def find_budget():
     
 
 # Will need to think more about this route and how it should function 
-@app.route("/citydetails")
-def show_city_details():
+@app.route("/citydetails/<city_id>")
+def show_city_details(city_id):
     """Show details about a given city."""
 
+# sql alchemy query for returning a specific city's information 
 
-    city_details = (db.session
-        .query(City)
-        .join(Price)
-        # .group_by(City.city_id)
-        .filter(Price.median_home_price <10000000)
-        .order_by(Price.median_home_price.desc())
-        # Want to order by price in descending order so users see relevant data
-        .limit(20))
+# similar to {city.prices[0].median_home_price}
+    
+    city_objects = City.query.filter_by(city_id=city_id).one()
+
+    for city_object in city_objects:
+        city_name = city_object.city_name,
+        state = city_object.state,
+        median_home_price = city_object.prices[0].median_home_price,
+        sales_price_mom= city_object.prices[0].sales_price_mom
+
+    return (city_object)
+
+    # filter(city_id = city_id)
     
     print ("debug5")
-    return render_template("/citydetails.html", city_details= city_details)
+    return render_template("/citydetails.html", city_object= city_object)
 
 
 
