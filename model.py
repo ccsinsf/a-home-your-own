@@ -2,6 +2,7 @@
 """Models and database functions for Ratings project."""
 
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 # This is the connection to the PostgreSQL database; we're getting this through
 # the Flask-SQLAlchemy helper library. On this, we can find the `session`
@@ -35,6 +36,21 @@ class City(db.Model):
     longitude = db.Column(db.Float(11), nullable = True)
     
     prices = db.relationship("Price")
+    histdata = db.relationship("HistoricalData")
+
+
+class HistoricalData(db.Model):
+
+    __tablename__ = "histdata"
+
+    hist_id= db.Column(db.Integer, autoincrement=True, primary_key=True)
+    city_id = db.Column(db.Integer, db.ForeignKey('cities.city_id'), nullable=True)
+    city_name= db.Column(db.String(15), db.ForeignKey('cities.city_name'), nullable=True)
+    state = db.Column(db.String(15), db.ForeignKey('cities.state'), nullable=True)
+    monthyear= db.Column(db.DateTime(%b,%Y))
+    histprice= db.Column(db.Integer(12))
+    
+    cities.db.relationship("City")
 
 
 # Helper functions

@@ -89,38 +89,21 @@ def find_budget():
 def show_city_details(city_id):
     """Show details about a given city."""
 
-# sql alchemy query for returning a specific city's information 
-
 # similar to {city.prices[0].median_home_price}
     
     city_objects = City.query.filter_by(city_id=city_id).all()
 
     print(city_objects)
     # This works 
-
-    # city_details = []
-    
-    # city_details.append( {
-    # "city_name" : city_objects.city_name,
-    # "state": city_objects.state,
-    # "median_home_price":  city_objects.prices[0].median_home_price,
-    # "sales_price_mom": city_objects.prices[0].sales_price_mom
-    # })
-
-    # city_details = city_details.__dict__
-
-
-    # print(city_details)
-    # filter(city_id = city_id)
     
     print ("debug5")
     return render_template("/citydetails.html", city_objects= city_objects)
 
-@app.route("/citydetails/<city_id>")
-def redirect_to_zillow(city_name):
     
-    return redirect("http://www.google.com")
+@app.route('/historicaldata')
+def redirect_to_historicaldata():
 
+    return render_template("/historicaldata.html")
 
 
 if __name__ == "__main__":

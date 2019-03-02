@@ -69,6 +69,28 @@ def load_cities():
     # Once we're done, we should commit our work
         db.session.commit()
 
+
+def load_histdata():
+    """Load historical data from All Cities Historical data into database"""
+
+    print("histdata")
+
+    for row in open(" file name here as CSV"):
+        row = row.rstrip()
+        city_id, city_name, state, moyr, hist_price = row.split(",")
+
+        histdata = HistoricalData(
+                    city_name=city_name,
+                    state= state,
+                    moyr= moyr,
+                    hist_price= hist_price)
+
+        db.session.add(histdata)
+
+        db.session.commit() 
+
+
+
 if __name__ == "__main__":
     connect_to_db(app)
 
