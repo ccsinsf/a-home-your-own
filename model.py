@@ -19,7 +19,7 @@ class Price(db.Model):
     price_id= db.Column(db.Integer, autoincrement=True, primary_key=True)
     city_id = db.Column(db.Integer, db.ForeignKey('cities.city_id'), nullable=True)
     median_home_price = db.Column(db.Integer, nullable=True)
-    sales_price_mom = db.Column(db.String(15), nullable=True)
+    sales_price_mom = db.Column(db.String(20), nullable=True)
     print_date= db.Column(db.String(10), nullable=True)
 
     cities = db.relationship("City")
@@ -31,7 +31,7 @@ class City(db.Model):
 
     city_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     city_name= db.Column(db.String(25))
-    state = db.Column(db.String(15))
+    state = db.Column(db.String(25))
     latitude = db.Column(db.Float(11), nullable = True)
     longitude = db.Column(db.Float(11), nullable = True)
     
@@ -43,14 +43,14 @@ class HistoricalData(db.Model):
 
     __tablename__ = "histdata"
 
-    hist_id= db.Column(db.Integer, autoincrement=True, primary_key=True)
+    hist_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     city_id = db.Column(db.Integer, db.ForeignKey('cities.city_id'), nullable=True)
-    city_name= db.Column(db.String(15), db.ForeignKey('cities.city_name'), nullable=True)
-    state = db.Column(db.String(15), db.ForeignKey('cities.state'), nullable=True)
-    monthyear= db.Column(db.DateTime(%b,%Y))
-    histprice= db.Column(db.Integer(12))
+    city_name= db.Column(db.String(25), nullable=True)
+    state = db.Column(db.String(25), nullable=True)
+    monthyear= db.Column(db.DateTime,nullable=True)
+    histprice = db.Column(db.Integer, nullable=True)
     
-    cities.db.relationship("City")
+    cities = db.relationship("City")
 
 
 # Helper functions

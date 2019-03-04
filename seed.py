@@ -75,17 +75,17 @@ def load_histdata():
 
     print("histdata")
 
-    for row in open(" file name here as CSV"):
+    for row in open("seed_data/final_all_cities_historical.csv"):
         row = row.rstrip()
-        city_id, city_name, state, moyr, hist_price = row.split(",")
+        city_id, city_name, state, date, hist_price = row.split(",")
 
         histdata = HistoricalData(
                     city_name=city_name,
                     state= state,
-                    moyr= moyr,
+                    date= date,
                     hist_price= hist_price)
 
-        db.session.add(histdata)
+        db.session.add([histdata, city])
 
         db.session.commit() 
 
@@ -101,3 +101,5 @@ if __name__ == "__main__":
     load_cities()
     # Load cities first becasue cities table includes a foreign key for the prices table
     load_prices()
+    # load historical data last because it includes a foreign key from the cities table 
+    load_histdata()
