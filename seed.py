@@ -81,8 +81,6 @@ def load_histdata():
 
         print(row)
 
-
-
         [city_name, state, 
         hist_price_jan_2009, hist_price_feb_2009, hist_price_mar_2009, hist_price_apr_2009,
         hist_price_may_2009, hist_price_jun_2009, hist_price_jul_2009, hist_price_aug_2009, hist_price_sep_2009, hist_price_oct_2009, 
@@ -244,19 +242,12 @@ def load_histdata():
                         hist_price_dec_2018= hist_price_dec_2018,
 
                         hist_price_jan_2019= hist_price_jan_2019)
-
-            print([histdata, city])
-
-            print(type(histdata))
-            print(type(city))
-
+            
+            city.histdata.append(histdata)
 
             db.session.add_all([histdata, city])
 
             db.session.commit() 
-
-            print("Finally no errors!!!!!!!!!!!!!!!!!!")
-
 
 
 if __name__ == "__main__":
