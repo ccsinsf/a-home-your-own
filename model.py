@@ -47,8 +47,7 @@ class HistoricalData(db.Model):
     city_id = db.Column(db.Integer, db.ForeignKey('cities.city_id'), nullable=True)
     city_name= db.Column(db.String(25), nullable=True)
     state = db.Column(db.String(25), nullable=True)
-    monthyear= db.Column(db.DateTime,nullable=True)
-    histprice = db.Column(db.Integer, nullable=True)
+    
     
     cities = db.relationship("City")
 
