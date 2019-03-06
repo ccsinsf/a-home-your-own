@@ -3,7 +3,7 @@ from jinja2 import StrictUndefined
 from flask import (Flask, render_template, redirect, request, flash, session)
 from flask_debugtoolbar import DebugToolbarExtension
 
-from model import Price, City, connect_to_db, db
+from model import Price, City, HistoricalData, connect_to_db, db
 from refactoring_queries import *
 
 import json 
@@ -50,6 +50,8 @@ def find_budget():
     # Find the city by median home price (modeling off Skills Assessment 5)
     # Return the top 20 closest matches to foster UX. These results will also be
     # returned to the console 
+
+    print(city_results)
 
     cityLocations= []
     print("**debug**")
@@ -100,10 +102,15 @@ def show_city_details(city_id):
     return render_template("/citydetails.html", city_objects= city_objects)
 
     
-@app.route('/historicaldata')
-def redirect_to_historicaldata():
+@app.route("/historicaldata/<city_id>")
+def redirect_to_historicaldata(city_id):
 
-    return render_template("/historicaldata.html")
+    city_objects = City.query.filter_by(city_id=city_id).all()
+
+    print(city_objects)
+
+
+    return render_template("/historicaldata.html", city_objects=city_objects)
 
 
 if __name__ == "__main__":

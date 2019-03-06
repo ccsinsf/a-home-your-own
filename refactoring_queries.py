@@ -31,22 +31,28 @@ def debug_functions(budget):
 
 def create_city_results_list():
     # Instanciate an empty list where city results will go 
-    city_results = []    
+    city_results = [] 
+
+    print(city_results)   
 
 def find_cities_in_budget(max_price):
 # Find city by median house price (modeling off Skills5)
 
-    city_results = (db.session
-        .query(City)
-        .join(Price)
-        # .group_by(City.city_id)
-        .filter(Price.median_home_price <= max_price)
-        .order_by(Price.median_home_price.desc())
-        # Want to order by price in descending order so users see relevant data
-        .limit(20))
+    # city_results = (db.session
+    #     .query(City)
+    #     .join(Price)
+    #     # .group_by(City.city_id)
+    #     .filter(Price.median_home_price <= max_price)
+    #     .order_by(Price.median_home_price.desc())
+    #     # # Want to order by price in descending order so users see relevant data
+    #     # .limit(20))
+
+    city_results = db.session.query(City).join(Price).filter(Price.median_home_price <= max_price).order_by(Price.median_home_price.desc()).all()
+
+    print(city_results[:20])
 
 
-    return(city_results)
+    return(city_results[:20])
 
 def pp_city_objects(city_results):
 
