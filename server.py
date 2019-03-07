@@ -117,9 +117,9 @@ def redirect_to_historicaldata(city_id):
     # historicaldata = db.session.query(HistoricalData).filter_by(city_id=city_id)
     # given the city object, you need to find the city_id and match the historical data on city id 
 
-    print(historicaldata_objects)
+    # print(historicaldata_objects)
 
-    hist_Prices= {}
+    
     print("**debug6**")
 
     city_name = historicaldata_objects[0].city_name
@@ -127,29 +127,63 @@ def redirect_to_historicaldata(city_id):
     city_id = historicaldata_objects[0].city_id
 
     # since we're only returning one city's historical data, I will just need to iterate over the historical data 
+    # that I expect to vary
+
+    dict_of_hist_Prices= {}
     i = 0
     for obj in historicaldata_objects:
         month_count = historicaldata_objects[i].month_count
         year_count = historicaldata_objects[i].year_count
         price_item = historicaldata_objects[i].price_item
 
+        # hist_Prices = ({
+        #     'city_name' : city_name,
+        #     'state': state,
+        #     'month_count': month_count,
+        #     'year_count': year_count, 
+        #     'city_id': city_id,
+        #     'price_item': price_item 
+        #     })
+
+        hist_Prices = {}
+        hist_Prices['city_name'] = city_name
+        hist_Prices['state'] = state
+        hist_Prices['month_count'] = month_count
+        hist_Prices['year_count'] = year_count
+        hist_Prices['city_id'] = city_id
+        hist_Prices['price_item'] = price_item
+
+        dict_of_hist_Prices[i] = hist_Prices
+
         i += 1
 
-        hist_Prices.add({ #modify to create dictionary
-            "city_name" : city_name,
-            "state": state,
-            "month_count": month_count,
-            "year_count": year_count, 
-            "city_id": city_id,
-            "price_item": price_item 
-            })
+        # hist_Prices.append({ #modify to create dictionary
+        #     "city_name" : city_name,
+        #     "state": state,
+        #     "month_count": month_count,
+        #     "year_count": year_count, 
+        #     "city_id": city_id,
+        #     "price_item": price_item 
+        #     })
 
-    print(hist_Prices)
+    # print(dict_of_hist_Prices)
 
+    # hist_dict= {}
 
-    return render_template("/historicaldata.html", city_id=city_id, hist_Prices=json.dumps(hist_Prices))
+    # for objs in hist_Prices:
+    #     'city_name' : city_name,
+    #     'state': state,
+    #     'month_count': month_count,
+    #     'year_count': year_count, 
+    #     'city_id': city_id,
+    #     'price_item': price_item 
 
+    return render_template("/historicaldata.html", city_id=city_id, dict_of_hist_Prices=json.dumps(dict_of_hist_Prices))
+@app.route("/test")
+def redirect_to_test():
 
+    return render_template("/test.html")
+    
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the
     # point that we invoke the DebugToolbarExtension
