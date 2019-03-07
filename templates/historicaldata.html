@@ -4,6 +4,8 @@
 
 <h1>Shows that this page is working </h1>
 
+{{ hist_Prices }}
+
 <canvas id="myChart" width="400" height="200"></canvas>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
@@ -13,20 +15,36 @@
 
 <script>
 var ctx = document.getElementById('myChart').getContext('2d');
+
+var hist_Prices = jQuery.parseJSON( '{ hist_Prices | tojson }' );
+  
+let data = [];
+
+console.log(hist_Prices);
+
 var chart = new Chart(ctx, {
     // The type of chart we want to create
     type: 'line',
 
     // The data for our dataset
-    data: {
-        labels: ["1/09", "2/09", "3/09", "4/09", "5/09", "6/09", "7/09", "8/09"],
-        datasets: [{
-            label: "My First dataset",
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45],
-        }]
-    },
+    // DO var hist_Prices and let data need to move back here
+
+
+
+    // console.log(hist_Prices);
+
+    // for (const price of hist_Price) {
+    //     let data: [{
+    //         "labels": [price.month_count,price.year_count],
+    //         datasets: [{
+    //             "label": price.city_name, price.state Historical Median Home Price,
+    //             backgroundColor: 'rgb(255, 99, 132)',
+    //             borderColor: 'rgb(255, 99, 132)',
+    //             "data": [price.price_item],
+    //         }]
+    //     }]  
+    // };
+
 
     // Configuration options go here
     options: {}

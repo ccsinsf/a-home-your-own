@@ -119,7 +119,7 @@ def redirect_to_historicaldata(city_id):
 
     print(historicaldata_objects)
 
-    hist_Prices= []
+    hist_Prices= {}
     print("**debug6**")
 
     city_name = historicaldata_objects[0].city_name
@@ -135,10 +135,10 @@ def redirect_to_historicaldata(city_id):
 
         i += 1
 
-        hist_Prices.append({
+        hist_Prices.add({ #modify to create dictionary
             "city_name" : city_name,
             "state": state,
-            "month_count": month_count ,
+            "month_count": month_count,
             "year_count": year_count, 
             "city_id": city_id,
             "price_item": price_item 
@@ -146,7 +146,8 @@ def redirect_to_historicaldata(city_id):
 
     print(hist_Prices)
 
-    return render_template("/historicaldata.html", city_objects=city_objects, hist_Prices=json.dumps(hist_Prices))
+
+    return render_template("/historicaldata.html", city_id=city_id, hist_Prices=json.dumps(hist_Prices))
 
 
 if __name__ == "__main__":
