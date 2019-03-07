@@ -112,7 +112,7 @@ def load_histdata():
             if month_count > 12:
                 month_count = 1 
                 year_count += 1 
-            # print(item)
+
     print("all done!")        
 
 

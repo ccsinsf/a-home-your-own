@@ -3,7 +3,7 @@ from jinja2 import StrictUndefined
 from flask import (Flask, render_template, redirect, request, flash, session)
 from flask_debugtoolbar import DebugToolbarExtension
 
-from model import Price, City, HistoricalData, connect_to_db, db
+from model2 import Price, City, HistoricalData, connect_to_db, db
 from refactoring_queries import *
 
 import json 
@@ -105,12 +105,48 @@ def show_city_details(city_id):
 @app.route("/historicaldata/<city_id>")
 def redirect_to_historicaldata(city_id):
 
-    city_objects = City.query.filter_by(city_id=city_id).all()
+    # city_objects = City.query.filter_by(city_id=city_id).all()
 
-    print(city_objects)
+    city = city_objects = City.query.filter_by(city_id=city_id).one()
 
+    city_id = city.city_id
 
-    return render_template("/historicaldata.html", city_objects=city_objects)
+    print(city_id)
+
+    historicaldata_objects = HistoricalData.query.filter_by(city_id=city_id).all()
+    # historicaldata = db.session.query(HistoricalData).filter_by(city_id=city_id)
+    # given the city object, you need to find the city_id and match the historical data on city id 
+
+    print(historicaldata_objects)
+
+    hist_Prices= []
+    print("**debug6**")
+
+    city_name = historicaldata_objects[0].city_name
+    state = historicaldata_objects[0].state
+    city_id = historicaldata_objects[0].city_id
+
+    # since we're only returning one city's historical data, I will just need to iterate over the historical data 
+    i = 0
+    for obj in historicaldata_objects:
+        month_count = historicaldata_objects[i].month_count
+        year_count = historicaldata_objects[i].year_count
+        price_item = historicaldata_objects[i].price_item
+
+        i += 1
+
+        hist_Prices.append({
+            "city_name" : city_name,
+            "state": state,
+            "month_count": month_count ,
+            "year_count": year_count, 
+            "city_id": city_id,
+            "price_item": price_item 
+            })
+
+    print(hist_Prices)
+
+    return render_template("/historicaldata.html", city_objects=city_objects, hist_Prices=json.dumps(hist_Prices))
 
 
 if __name__ == "__main__":

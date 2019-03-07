@@ -5,8 +5,8 @@ from jinja2 import StrictUndefined
 from flask import (Flask, render_template, redirect, request, flash, session)
 from flask_debugtoolbar import DebugToolbarExtension
 
-from model import Price, City, connect_to_db, db
-from model import *
+from model2 import Price, City, connect_to_db, db
+from model2 import *
 
 # init_app()
 
@@ -50,7 +50,6 @@ def find_cities_in_budget(max_price):
     city_results = db.session.query(City).join(Price).filter(Price.median_home_price <= max_price).order_by(Price.median_home_price.desc()).all()
 
     print(city_results[:20])
-
 
     return(city_results[:20])
 
