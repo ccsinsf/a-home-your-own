@@ -42,6 +42,7 @@
 
 <h1>
  Welcome to {{city_objects[0].city_name}}, {{city_objects[0].state}} </head>
+
 </h1>
  <body>
         
@@ -68,11 +69,17 @@
     Median home price: ${{city_objects[0].prices[0].median_home_price}}  <br>
     Month-over-month sales price trend: {{city_objects[0].prices[0].sales_price_mom}} <br>
     <br>
+    <input type="button" onclick=location.href="/historicaldata/{{ city_objects[0].city_id }}" value="Hisorical Data" />
     
     <br> <br> 
 
 </h4>
+
+
 <p>
+
+
+
   If {{city_objects[0].prices[0].sales_price_mom}} > 0, the market is hot! If possible, wait until the fall to purchase a home. 
 
     <br>
@@ -95,12 +102,15 @@ Get excited about your new hometown by checking out the top rated events by <a h
 Interested in lining up a job before you get there? Try looking for open job listings on <a href=" https://www.monster.com/jobs/search/?where={{city_objects[0].city_name}}&intcid=skr_navigation_nhpso_searchMain" title="Monster Job Search"> Monster.com!</a>
   <br>  
   <br>  
+  <!-- use this URL https://www.monster.com/jobs/search/?where=Madison__2C-WI -->
 
 Already own a home? Get an offer and browse homes with <a href="https://www.opendoor.com/" title="Get an offer through Opendoor">Opendoor</a>!
   <br>
   <br>
 
 Explore more of the neighborhood with <a href="http://www.zillow.com/homes/{{city_objects[0].city_name}}/" title="Browse what's in your budget">Zillow</a>. 
+
+<!-- Use this URL https://www.zillow.com/homes/jacksonville-Florida/ -->
 
 
 </p>

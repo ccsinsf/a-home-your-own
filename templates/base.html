@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    {% block title %}<title>Find your new home</title>{% endblock %}
+    {% block title %}<title> A Home Your Own</title>{% endblock %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
    <!--  <link rel="stylesheet" type="text/css" href="/static/styles.css"> -->
+
+
 </head>
 <body>
     <!-- Show flashed messages -->
@@ -13,6 +15,11 @@
       {% endfor %}
     {% endwith %}
 
-    {% block content %} CONTENT GOES HERE {% endblock %}
+    {% block content %} 
+    CONTENT GOES HERE 
+
+    <input type="button" onclick=location.href="/historicaldata/{{ city.city_id }}" value="Hisorical Data" />
+    
+    {% endblock %}
 </body>
 </html>

@@ -2,9 +2,9 @@
 
 {% block content %}
 
-<h1>Shows that this page is working </h1>
+<h1>Historical Median Home Prices </h1>
 
-<canvas id="myChart" width="1254" height="200">Your browser does not support the canvas element.</canvas>
+<canvas id="myChart" width="404" height="200">Your browser does not support the canvas element.</canvas>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 
@@ -70,7 +70,7 @@ var chart = new Chart(ctx, {
     data: {
         labels: all_labels_array,
         datasets: [{
-            label: city_name + "," + state,
+            label: city_name + ", " + state,
             backgroundColor: 'rgb(22, 29, 247)',
             borderColor: 'rgb(22, 29, 247)',
             data: all_prices_for_city_id,
@@ -90,7 +90,7 @@ console.log({type: 'line',
     data: {
         labels: all_labels_array,
         datasets: [{
-            label: city_name + "," + state,
+            label: city_name + ", " + state,
             backgroundColor: 'rgb(22, 29, 247)',
             borderColor: 'rgb(22, 29, 247)',
             data: all_prices_for_city_id,
