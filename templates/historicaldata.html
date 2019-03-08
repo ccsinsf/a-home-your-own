@@ -4,6 +4,10 @@
 
 <h1>Shows that this page is working </h1>
 
+<canvas id="myChart" width="1254" height="200">Your browser does not support the canvas element.</canvas>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
 
 <script>
 function testFunction() {
@@ -18,13 +22,16 @@ console.log(testObj2);
 
 var list_of_hist_Prices = JSON.parse({{ list_of_hist_Prices | tojson }});
 
-
-  
-
-
 console.log(list_of_hist_Prices);
 
 // for (let key of Object.keys(dict_of_hist_Prices)) {console.log();}
+
+let all_prices_for_city_id = []
+let all_labels_array = []
+
+let city_name = list_of_hist_Prices[0].city_name
+
+let state = list_of_hist_Prices[0].state
 
 for (let key of list_of_hist_Prices){
     {console.log(key.month_count)}; 
@@ -35,40 +42,97 @@ for (let key of list_of_hist_Prices){
     // console.log(labelscjs)
 
 
-    // let datacjs = {data: {
-    //     labels: [key.month_count, key.year_count],
-    //     datasets: [{
-    //         label: key.city_name, key.state,
-    //         backgroundColor: 'rgb(22, 29, 247)',
-    //         borderColor: 'rgb(22, 29, 247)',
-    //         data: [key.price_item],
-    //     }]
-    // }};
+    let cjs_price_item = key.price_item
+
+    all_prices_for_city_id.push(cjs_price_item)
+
+    let month_count_array = key.month_count
+
+    let year_count_array = key.year_count
+
+    all_labels_array.push(key.month_count + "/ "+ key.year_count)
+
     // console.log(datacjs)
     };
 
+    
 
-</script>
+console.log(all_prices_for_city_id)
+console.log(all_labels_array)
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-
-<canvas id="myChart" width="400" height="200">Your browser does not support the canvas element.</canvas>
-
-
-<script>
 var ctx = document.getElementById('myChart').getContext('2d');
 var chart = new Chart(ctx, {
     // The type of chart we want to create
     type: 'line',
 
     // The data for our dataset
+
+    data: {
+        labels: all_labels_array,
+        datasets: [{
+            label: city_name + "," + state,
+            backgroundColor: 'rgb(22, 29, 247)',
+            borderColor: 'rgb(22, 29, 247)',
+            data: all_prices_for_city_id,
+        }]
+    },
+
+    // DO var hist_Prices and let data need to move back here
+
+    // Configuration options go here
+    options: {
+        responsive : true,
+
+    }
+});
+
+console.log({type: 'line',
+    data: {
+        labels: all_labels_array,
+        datasets: [{
+            label: city_name + "," + state,
+            backgroundColor: 'rgb(22, 29, 247)',
+            borderColor: 'rgb(22, 29, 247)',
+            data: all_prices_for_city_id,
+        }]
+    },
+
+    // DO var hist_Prices and let data need to move back here
+
+    // Configuration options go here
+    options: {
+        responsive : true,
+
+    }})
+
+</script>
+
+
+
+<!-- <script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+
+    data: {
+        labels: all_labels_array,
+        datasets: [{
+            label: city_name + "," + state,
+            backgroundColor: 'rgb(22, 29, 247)',
+            borderColor: 'rgb(22, 29, 247)',
+            data: all_prices_for_city_id,
+        }]
+    };
+
     // DO var hist_Prices and let data need to move back here
 
     // Configuration options go here
     options: {}
 });
 </script>
-
+ -->
 
 {% endblock %}
