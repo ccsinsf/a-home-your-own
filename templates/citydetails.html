@@ -69,7 +69,7 @@
     Median home price: ${{city_objects[0].prices[0].median_home_price}}  <br>
     Month-over-month sales price trend: {{city_objects[0].prices[0].sales_price_mom}} <br>
     <br>
-    <input type="button" onclick=location.href="/historicaldata/{{ city_objects[0].city_id }}" value="Hisorical Data" />
+    <input type="button" onclick=location.href="/historicaldata/{{ city_objects[0].city_id }}" value="See the past 10 years of median home prices" />
     
     <br> <br> 
 
@@ -77,8 +77,6 @@
 
 
 <p>
-
-
 
   If {{city_objects[0].prices[0].sales_price_mom}} > 0, the market is hot! If possible, wait until the fall to purchase a home. 
 
@@ -112,7 +110,6 @@ Already own a home? Get an offer and browse homes with <a href="https://www.open
 
 Explore more of the neighborhood with <a href="https://www.zillow.com/homes/{{city_objects[0].city_name}}-{{city_objects[0].state}}//homes//" title="Browse what's in your budget">Zillow</a>. 
 
-<!-- Use this URL https://www.zillow.com/homes/jacksonville-Florida/ -->
 
 
 </p>

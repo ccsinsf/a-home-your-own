@@ -136,15 +136,6 @@ def redirect_to_historicaldata(city_id):
         year_count = historicaldata_objects[i].year_count
         price_item = historicaldata_objects[i].price_item
 
-        # hist_Prices = ({
-        #     'city_name' : city_name,
-        #     'state': state,
-        #     'month_count': month_count,
-        #     'year_count': year_count, 
-        #     'city_id': city_id,
-        #     'price_item': price_item 
-        #     })
-
         hist_Prices = {
             "city_name" : city_name,
             "state": state,
@@ -156,28 +147,9 @@ def redirect_to_historicaldata(city_id):
 
         list_of_hist_Prices.append(hist_Prices)
 
-        # hist_Prices.append({ 
-        #     "city_name" : city_name,
-        #     "state": state,
-        #     "month_count": month_count,
-        #     "year_count": year_count, 
-        #     "city_id": city_id,
-        #     "price_item": price_item 
-        #     })
-
         i += 1
 
     print(list_of_hist_Prices)
-
-    # hist_dict= {}
-
-    # for objs in hist_Prices:
-    #     'city_name' : city_name,
-    #     'state': state,
-    #     'month_count': month_count,
-    #     'year_count': year_count, 
-    #     'city_id': city_id,
-    #     'price_item': price_item 
 
     return render_template("/historicaldata.html", city_id=city_id, list_of_hist_Prices=json.dumps(list_of_hist_Prices))
 @app.route("/test")
