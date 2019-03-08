@@ -4,55 +4,63 @@
 
 <h1>Shows that this page is working </h1>
 
-<!-- {{ dict_of_hist_Prices }} -->
 
-<canvas id="myChart" width="400" height="200"></canvas>
+<script>
+function testFunction() {
+    let testObj = {1: "TESTING"}
+    console.log(testObj);
+}
+
+testFunction()
+
+let testObj2 = {1: "testing again"}
+console.log(testObj2);
+
+var list_of_hist_Prices = JSON.parse({{ list_of_hist_Prices | tojson }});
+
+
+  
+let data = [];
+console.log(data)
+
+console.log(list_of_hist_Prices);
+
+for (let key of list_of_hist_Prices) 
+    {console.log(key.price_item)};
+
+// for (let key of Object.keys(dict_of_hist_Prices)) {console.log();}
+
+    //  data: {
+    //     labels: [key.month_count, key.year_count],
+    //     datasets: [{
+    //         label: key.city_name, key.state Historical Median Home Price,
+    //         backgroundColor: 'rgb(22, 29, 247)',
+    //         borderColor: 'rgb(22, 29, 247)',
+    //         data: [key.price_item],
+    //     }]
+    // }
+    // };
+
+</script>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 
-<!-- <script src="path/to/chartjs/dist/Chart.js"></script>
- -->
+<canvas id="myChart" width="400" height="200">Your browser does not support the canvas element.</canvas>
+
 
 <script>
 var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
 
-var dict_of_hist_Prices = jQuery.parseJSON( '{"name": "john"}');
+    // The data for our dataset
+    // DO var hist_Prices and let data need to move back here
 
-console.log("helloworld");
-  
-let data = [];
-
-// 
-
-// let key = dict_of_hist_Prices[1]
-
-// var chart = new Chart(ctx, {
-//     // The type of chart we want to create
-//     type: 'line',
-
-//     // The data for our dataset
-//     // DO var hist_Prices and let data need to move back here
-
-//     // console.log(hist_Prices);
-
-//     // for (let key of dict_of_hist_Prices) {console.log(key);}
-
-    
-//         data: {
-//             labels: [key.month_count,key.year_count],
-//             datasets: [{
-//                 label: key.city_name, 
-//                 backgroundColor: 'rgb(255, 99, 132)',
-//                 borderColor: 'rgb(255, 99, 132)',
-//                 data: [key.price_item],
-//             }]
-//         },  
-    
-
-
-//     // Configuration options go here
-//     options: {}
-// });
+    // Configuration options go here
+    options: {}
+});
 </script>
 
 

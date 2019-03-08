@@ -129,7 +129,7 @@ def redirect_to_historicaldata(city_id):
     # since we're only returning one city's historical data, I will just need to iterate over the historical data 
     # that I expect to vary
 
-    dict_of_hist_Prices= {}
+    list_of_hist_Prices= []
     i = 0
     for obj in historicaldata_objects:
         month_count = historicaldata_objects[i].month_count
@@ -145,19 +145,18 @@ def redirect_to_historicaldata(city_id):
         #     'price_item': price_item 
         #     })
 
-        hist_Prices = {}
-        hist_Prices['city_name'] = city_name
-        hist_Prices['state'] = state
-        hist_Prices['month_count'] = month_count
-        hist_Prices['year_count'] = year_count
-        hist_Prices['city_id'] = city_id
-        hist_Prices['price_item'] = price_item
+        hist_Prices = {
+            "city_name" : city_name,
+            "state": state,
+            "month_count": month_count,
+            "year_count": year_count, 
+            "city_id": city_id,
+            "price_item": price_item 
+            }
 
-        dict_of_hist_Prices[i] = hist_Prices
+        list_of_hist_Prices.append(hist_Prices)
 
-        i += 1
-
-        # hist_Prices.append({ #modify to create dictionary
+        # hist_Prices.append({ 
         #     "city_name" : city_name,
         #     "state": state,
         #     "month_count": month_count,
@@ -166,7 +165,9 @@ def redirect_to_historicaldata(city_id):
         #     "price_item": price_item 
         #     })
 
-    # print(dict_of_hist_Prices)
+        i += 1
+
+    print(list_of_hist_Prices)
 
     # hist_dict= {}
 
@@ -178,12 +179,12 @@ def redirect_to_historicaldata(city_id):
     #     'city_id': city_id,
     #     'price_item': price_item 
 
-    return render_template("/historicaldata.html", city_id=city_id, dict_of_hist_Prices=json.dumps(dict_of_hist_Prices))
+    return render_template("/historicaldata.html", city_id=city_id, list_of_hist_Prices=json.dumps(list_of_hist_Prices))
 @app.route("/test")
 def redirect_to_test():
 
     return render_template("/test.html")
-    
+
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the
     # point that we invoke the DebugToolbarExtension
