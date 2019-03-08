@@ -20,26 +20,33 @@ var list_of_hist_Prices = JSON.parse({{ list_of_hist_Prices | tojson }});
 
 
   
-let data = [];
-console.log(data)
+
 
 console.log(list_of_hist_Prices);
 
-for (let key of list_of_hist_Prices) 
-    {console.log(key.price_item)};
-
 // for (let key of Object.keys(dict_of_hist_Prices)) {console.log();}
 
-    //  data: {
+for (let key of list_of_hist_Prices){
+    {console.log(key.month_count)}; 
+    // {console.log(key.year_count)}; this works 
+    // {console.log(key.price_item)}; this works
+    console.log(key.state);
+    // let labelscjs = {labels: [key.month_count, key.year_count]}
+    // console.log(labelscjs)
+
+
+    // let datacjs = {data: {
     //     labels: [key.month_count, key.year_count],
     //     datasets: [{
-    //         label: key.city_name, key.state Historical Median Home Price,
+    //         label: key.city_name, key.state,
     //         backgroundColor: 'rgb(22, 29, 247)',
     //         borderColor: 'rgb(22, 29, 247)',
     //         data: [key.price_item],
     //     }]
-    // }
-    // };
+    // }};
+    // console.log(datacjs)
+    };
+
 
 </script>
 
