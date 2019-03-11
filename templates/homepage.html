@@ -1,62 +1,87 @@
 {% extends "base.html" %}
+{% block title %}
+  <title></title>
+{% endblock %}
+
+{% block before_nav %}
+<style>
+.container {
+  position: relative;
+}
+
+.topleft {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  font-size: 18px;
+}
+
+img { 
+  width: 100%;
+  height: auto;
+  opacity: 0.3;
+}
+
+html, .homepage, video {
+    width: 100%;
+    height: 100%;
+}
+
+  body {
+      position: relative;
+  }
+
+    .video-background {
+        position: relative;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+    }
+  </style>
+    <div class="video-background"> 
+        <video preload="none" loop muted autoplay poster="/static/Home.jpg" src="/static/Home.mp4">
+        </video>
+     </div>
+{% endblock %}
+
 
 {% block content %}
-
-
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>A home your own</title>
-   
-    <!-- {% block title %}<title>Find your new home</title>{% endblock %} -->
-    <!-- <link rel="stylesheet" type="text/css" href="/static/styles.css"></head> -->
-
-  <link rel="stylesheet" 
-        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css?family=Droid+Sans|Droid+Serif:700" rel="stylesheet">
-  <!-- Stylesheet -->
-  <link rel="stylesheet"
-        href="/styles.css">
-
-
- <div class="video-background" style= "background-image:url(../static/Home.mp4)"> 
-    <video preload = "none" loop="" muted="" poster = "../static/Home.jpg" src="(../static/Home.mp4)">
-    </video>
- </div>   
-
-<!--   <div class="container-fluid">
-    <div class="row">
-      <div class="col-xs-12 main">
-       
-      </div>
-    </div>
-  </div> -->
-
-  <div class="container-fluid">
-    <div class="row">
+  <div class="container-fluid" style ="
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    ">
+    <div class="row" style="
+      padding-bottom: 5em;
+      ">
       <div class="col-xs-12 main">
         <h1 class="main-title">Let us help you find your new home</h1>
+        <h3>Simply share a dollar amount you'd like to spend on a home <br>
+            and we'll return a list of cities where you can find homes for that amount</h3>
+            <h3> Let's begin!</h3>
+                <form action='/get-price' method="POST">
+                    What's your budget for a home? 
+                <input type='number' name='price' required>
+                    Please enter a number
+                <input type="submit" value="submit">
+                </form>
       </div>
     </div>
   </div>
     
 
-    <div class= "body_text" 
-    <h3>Simply share a dollar amount you'd like to spend on a home <br>
-    and we'll return a list of cities where you can find homes for that amount</h3>
+    <div class= "body_text">
     
 
-    <!-- <img class="title-img" src="https://na.rdcpix.com/274937236/8ecb8b5c10a19ccbe1daba7bc38ec77cw-c317321xd-w685_h860_q80.jpg"> -->
-    
-    <br>
-    <br>
-    <h3> Let's begin!</h3>
-    <form action='/get-price' method="POST">
-        What's your budget for a home? 
-        <input type='number' name='price' required>
-        Please enter a number
-        <input type="submit" value="submit">
-    </form>
+   <!-- <img class="title-img" src="https://na.rdcpix.com/274937236/8ecb8b5c10a19ccbe1daba7bc38ec77cw-c317321xd-w685_h860_q80.jpg">      
+   
+    -->
 
     </div>
 
