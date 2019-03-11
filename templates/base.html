@@ -5,9 +5,29 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
    <!--  <link rel="stylesheet" type="text/css" href="/static/styles.css"> -->
 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Load Bootstrap 4 -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
 </head>
 <body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">A home your own</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+</nav>
+
+
     <!-- Show flashed messages -->
     {% with messages = get_flashed_messages() %}
       {% for message in messages %}
@@ -23,3 +43,96 @@
     {% endblock %}
 </body>
 </html>
+
+
+
+-----
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap Exercise</title>
+
+   Load Bootstrap 4 -->
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+  Load Font Awesome
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+
+
+  <!-- Load our stylesheet -->
+
+<!-- </head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Ubermelon</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Shop</a>
+      </li>
+    </ul>
+    <span class="navbar-text">
+    <ul class="navbar-nav mr-auto"> 
+      <li class="nav-item">
+        <a class="nav-link" href="#">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Favorites</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Settings</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Profile</a>
+      </li>
+
+     </ul> 
+    </span>
+  </div>
+</nav>
+
+<div class="card mb-3">
+  <img src="puns.jpg" class="card-img-top" alt="MelonCollie" height=500px width=500px>
+  <div class="card-body">
+    <p class="card-text">We deliver only the highest quality domestic and exotic melons from local, independent farmers from around the world. Our melons are delivered quickly with greatest care. We guarantee every order, every time.</p>
+  </div>
+</div>
+
+<div class="card-group">
+  <div class="card">
+    <div class="card-body">
+        <div class="row">
+        <i class="fas fa-trophy"></i> <h5 class="card-title">Award Winning</h5>
+    </div>
+      <p class="card-text">Don't take our word for it. See all the awards our melons have earned.</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+        <div class="row"> <i class="fas fa-globe-europe"></i> <h5 class="card-title">Huge Selection</h5>
+      </div>
+      <p class="card-text"> We import melons from all over the world, ensuring we have every melon you could possibly desire.</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+        <div class="row"> <i class="fas fa-certificate"></i><h5 class="card-title">Certified Sustainable</h5> </div>
+      
+      <p class="card-text">Our melons are sourced only from sustainable, local, organic farmers. These are the healthiest melons you'll ever eat.</p>
+    </div>
+  </div>
+</div> -->
+ 
