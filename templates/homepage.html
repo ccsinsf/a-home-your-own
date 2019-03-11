@@ -58,17 +58,26 @@ html, .homepage, video {
     align-items: center;
     ">
     <div class="row" style="
-      padding-bottom: 5em;
+      padding-bottom: 4em;
       ">
-      <div class="col-xs-12 main">
-        <h1 class="main-title">Let us help you find your new home</h1>
-        <h3>Simply share a dollar amount you'd like to spend on a home <br>
-            and we'll return a list of cities where you can find homes for that amount</h3>
-            <h3> Let's begin!</h3>
+      <div class="col-xs-12 main"
+        style ="
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    ">
+        <h1 class="title">Let us help you find your new home</h1>
+        <h4>Simply share how much you'd like to spend on a home
+            and we'll help you start your journey</h4>
                 <form action='/get-price' method="POST">
                     What's your budget for a home? 
                 <input type='number' name='price' required>
-                    Please enter a number
+                    
                 <input type="submit" value="submit">
                 </form>
       </div>
@@ -77,11 +86,7 @@ html, .homepage, video {
     
 
     <div class= "body_text">
-    
-
-   <!-- <img class="title-img" src="https://na.rdcpix.com/274937236/8ecb8b5c10a19ccbe1daba7bc38ec77cw-c317321xd-w685_h860_q80.jpg">      
-   
-    -->
+  
 
     </div>
 
