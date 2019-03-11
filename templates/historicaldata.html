@@ -71,11 +71,13 @@ var chart = new Chart(ctx, {
         labels: all_labels_array,
         datasets: [{
             label: city_name + ", " + state,
-            backgroundColor: 'rgb(22, 29, 247)',
-            borderColor: 'rgb(22, 29, 247)',
+            backgroundColor: '#4169E1',
+            borderColor: '#4169E1',
             data: all_prices_for_city_id,
         }]
     },
+
+    // other colors that work: #99CED4 (light blue/cotton)
 
     // DO var hist_Prices and let data need to move back here
 
@@ -86,24 +88,24 @@ var chart = new Chart(ctx, {
     }
 });
 
-console.log({type: 'line',
-    data: {
-        labels: all_labels_array,
-        datasets: [{
-            label: city_name + ", " + state,
-            backgroundColor: 'rgb(22, 29, 247)',
-            borderColor: 'rgb(22, 29, 247)',
-            data: all_prices_for_city_id,
-        }]
-    },
+// console.log({type: 'line',
+//     data: {
+//         labels: all_labels_array,
+//         datasets: [{
+//             label: city_name + ", " + state,
+//             backgroundColor: '#88BBDG',
+//             borderColor: '#88BBDG',
+//             data: all_prices_for_city_id,
+//         }]
+//     },
 
-    // DO var hist_Prices and let data need to move back here
+//     // DO var hist_Prices and let data need to move back here
 
-    // Configuration options go here
-    options: {
-        responsive : true,
+//     // Configuration options go here
+//     options: {
+//         responsive : true,
 
-    }})
+//     }})
 
 </script>
 
