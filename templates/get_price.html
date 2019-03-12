@@ -2,6 +2,8 @@
 
 {% block content %}
 
+<!-- <body bgcolor="#4ABDAC"></body> -->
+
     <head>
     <meta charset='utf-8' />
     <title></title>
@@ -44,7 +46,7 @@
   </div>
 <body>
         
-    <div id='map' style='width: 1000px; height: 550px;'></div>
+    <div id='map' style='width: 1200px; height: 550px;'></div>
     <script>
 
     mapboxgl.accessToken = 'pk.eyJ1IjoiY2NzaW5zZiIsImEiOiJjanNjZHY2bm8wMTh1M3lud3U3M3lzZDhkIn0.r560K1qwtE2hq9VkHoUM5A';
@@ -125,19 +127,20 @@
     </body>
 
     {% for city in city_results %}
-    <h6 class="body_text">
 
-        {{city.city_name}}, {{city.state}} : Median home price is ${{city.prices[0].median_home_price}}
+  <div class="card-group">
+  <div class="card">
+    <div class="card-body">
+        <div class="row">
+        <i class="fas fa-trophy"></i> <h5 class="card-title">{{city.city_name}}, {{city.state}} </h5>
+    </div>
+      <p class="card-text">Median home price is ${{city.prices[0].median_home_price}}.</p>
+      <input type="button" onclick=location.href="/citydetails/{{ city.city_id }}" value="Learn More" />
 
-    <input type="button" onclick=location.href="/citydetails/{{ city.city_id }}" value="Learn More" />
-
-    </h6>
+    </div>      
+    </div>
+  </div>
 
     {%endfor%}
-
-    <img class="title-img" src="https://na.rdcpix.com/274937236/8ecb8b5c10a19ccbe1daba7bc38ec77cw-c317321xd-w685_h860_q80.jpg">
-    
-    <br>
-    <br>
 
 {% endblock %}
