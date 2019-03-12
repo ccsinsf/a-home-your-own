@@ -66,80 +66,49 @@
   <title>City Details</title>
 
   <h4>
-
-
+    <div class="card mb-2">
+      <!-- <blockquote class="blockquote text-center"> -->
+   <!--  <div class="col py-3 px-lg-2"> </div> -->
+      <div class="card-body">
+        <p class="card-text">
+         
     City name: {{city_objects[0].city_name}} <br>
     State: {{city_objects[0].state}}  <br>
-    Median home price: ${{city_objects[0].prices[0].median_home_price}}  <br>
-    <!-- Month-over-month sales price trend: {{city_objects[0].prices[0].sales_price_mom}}  --><br>
-    <br>
+    Median home price: ${{city_objects[0].prices[0].median_home_price}} 
+    <!-- Month-over-month sales price trend: {{city_objects[0].prices[0].sales_price_mom}}  -->
+    </blockquote>
+    
+    </p>
     </div>
 
   </h4>
 
+ 
 
 <div class="card mb-3">
+
   
   <div class="card-body">
-    <div class="col py-3 px-lg-2"> </div>
+   <!--  <div class="col py-3 px-lg-2"> </div> -->
       <!-- <i class="fas fa-chart-bar"></i> -->
-      <h5>
-    <p class="card-text"> In December of 2018, sales prices changed by {{city_objects[0].prices[0].sales_price_mom}}%. If the change is positive, it means the market is heating up and you can expect prices for homes to increase over the spring and summer. If the chance is negative, it means that home prices fell and might continue to do so. Expect home prices to dip in the late summer through winter. You can learn more about {{city_objects[0].city_name}}'s home prices by exploring our housing data.<input type="button" onclick=location.href="/historicaldata/{{ city_objects[0].city_id }}" value="Learn More" /></p>
-  </h5>
+    
+    <p class="card-text"> In December of 2018, sales prices changed by {{city_objects[0].prices[0].sales_price_mom}}%. If this change is a positive number, it means the market is heating up and you can expect prices for homes to increase. If the change is negative, it means that home prices fell and might continue to do so. Expect home prices to dip in the late summer through winter and rise again in the spring. 
+      <br>
+      <br>
+    You can learn more about {{city_objects[0].city_name}}'s home prices by exploring our housing data.</p> <h6><input type="button" onclick=location.href="/historicaldata/{{ city_objects[0].city_id }}" value="Learn More" /></h6>
+  
 
   </div>
 </div>
-
-
-
-<!-- <p>
- -->
-  <!-- <div class= body_text>
-  If {{city_objects[0].prices[0].sales_price_mom}} > 0, the market is hot! If possible, wait until the fall to purchase a home. 
-
-    <br>
-    <br>
-    
-
-  If {{city_objects[0].prices[0].sales_price_mom}} < 0, the market is cold. Sales prices are declining and are likely to continue to decline through the winter. Now would be a great time to make an offer! 
-  <br>
-  <br>
-  <br>
-
-Now that you know a little about {{city_objects[0].city_name}}, below are a few helpful tools to help you along the way! 
-
-  <br>
-  <br>
-Get excited about your new hometown by checking out the top rated events by <a href= "https://www.airbnb.com/s/{{city_objects[0].city_name}}--{{city_objects[0].state}}--United-States/experiences" title="Airbnb top events"> Airbnb</a>.
-
-
-  <br>
-  <br>
-
-Interested in lining up a job before you get there? Try looking for open job listings on <a href=" https://www.monster.com/jobs/search/?where={{city_objects[0].city_name}}__2C-{{city_objects[0].state}}"title="Monster Job Search"> Monster.com!</a>
-
-  <br>  
-  <br>  
-
-Already own a home? Get an offer and browse homes with <a href="https://www.opendoor.com/" title="Get an offer through Opendoor">Opendoor</a>!
-  <br>
-  <br>
-
-Explore more of the neighborhood with <a href="https://www.zillow.com/homes/{{city_objects[0].city_name}}-{{city_objects[0].state}}//homes//" title="Browse what's in your budget">Zillow</a>. 
-
-
-</div>
-</p> -->
-
-  
-
-    <br>
+<div class="p-3 mb-2 bg-info text-dark">
 
 <div class="card mb-3">
   
+
   
   <div class="card-body">
-    <div class="col py-3 px-lg-2"> </div>
+   <!--  <div class="col py-3 px-lg-2"> </div> -->
+    
     <p class="card-text">Now that you know a little about {{city_objects[0].city_name}}, check out some of the links below to explore local events, find a new role, sell your current place, and explore your new neighborhood.</p>
   </div>
 </div>
@@ -172,10 +141,11 @@ Explore more of the neighborhood with <a href="https://www.zillow.com/homes/{{ci
         <div class="col py-3 px-lg-2">
         <i class="fas fa-home"></i> <h4 class="card-title">Explore the Neighborhood</h4>
     </div>
-      <p class="card-text">Explore more of the neighborhood with <a href="https://www.zillow.com/homes/{{city_objects[0].city_name}}-{{city_objects[0].state}}//homes//" title="Browse what's in your budget">Zillow</a>. </p>
+      <p class="card-text"> Explore more of the neighborhood with <a href="https://www.zillow.com/homes/{{city_objects[0].city_name}}-{{city_objects[0].state}}//homes//" title="Browse what's in your budget">Zillow</a>. </p>
     </div>
   </div>
-</div>    
+</div>  
+</div>  
   
 
 {% endblock %}
