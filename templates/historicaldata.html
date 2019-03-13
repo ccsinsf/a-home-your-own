@@ -3,7 +3,19 @@
 {% block content %}
 
 
-<h1 class="title">Historical Median Home Prices </h1>
+
+<div class = "title">
+    <div class="card-group">
+    <div class="card">
+    <div class="card-body">
+
+    <h2>Historical Median Home Prices</h2>
+
+    </div>
+    </div>
+    </div>
+    </div>
+
 
 <canvas id="myChart" width="404" height="200">Your browser does not support the canvas element.</canvas>
 
@@ -72,8 +84,8 @@ var chart = new Chart(ctx, {
         labels: all_labels_array,
         datasets: [{
             label: city_name + ", " + state,
-            backgroundColor: '#4169E1',
-            borderColor: '#4169E1',
+            backgroundColor: '#48a3b8',
+            borderColor: '#48a3b8',
             data: all_prices_for_city_id,
         }]
     },
