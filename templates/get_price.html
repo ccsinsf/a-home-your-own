@@ -46,7 +46,7 @@
   </div>
 <body>
         
-    <div id='map' style='width: 1200px; height: 550px;'></div>
+    <div id='map' style='width: 1500px; height: 600px;'></div>
     <script>
 
     mapboxgl.accessToken = 'pk.eyJ1IjoiY2NzaW5zZiIsImEiOiJjanNjZHY2bm8wMTh1M3lud3U3M3lzZDhkIn0.r560K1qwtE2hq9VkHoUM5A';
@@ -132,7 +132,7 @@
   <div class="card">
     <div class="card-body">
         <div class="row">
-        <i class="fas fa-trophy"></i> <h5 class="card-title">{{city.city_name}}, {{city.state}} </h5>
+        <i class="fas fa-map-marker-alt"></i> <h5 class="card-title">{{city.city_name}}, {{city.state}} </h5>
     </div>
       <p class="card-text">Median home price is ${{city.prices[0].median_home_price}}.</p>
       <input type="button" onclick=location.href="/citydetails/{{ city.city_id }}" value="Learn More" />
