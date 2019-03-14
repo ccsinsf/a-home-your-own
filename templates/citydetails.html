@@ -106,7 +106,10 @@
     <p class="card-text"> In December of 2018, sales prices changed by {{city_objects[0].prices[0].sales_price_mom}}%. If this change is a positive number, it means the market is heating up and you can expect prices for homes to increase. If the change is negative, it means that home prices fell and might continue to do so. Expect home prices to dip in the late summer through winter and rise again in the spring. 
       <br>
       <br>
-    You can learn more about {{city_objects[0].city_name}}'s home prices by exploring our housing data.</p> <h6><input type="button" onclick=location.href="/historicaldata/{{ city_objects[0].city_id }}" value="Learn More" /></h6>
+    You can learn more about {{city_objects[0].city_name}}'s home prices by exploring our housing data.</p> 
+
+    <a href="/historicaldata/{{ city_objects[0].city_id }}" class="btn btn-info">Learn More</a>
+    <!-- <h6><input type="button" onclick=location.href="/historicaldata/{{ city_objects[0].city_id }}" value="Learn More" /></h6> -->
   
 
   </div>
