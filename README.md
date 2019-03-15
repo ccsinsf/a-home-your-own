@@ -44,4 +44,4 @@ Technologies
 
 Contact:
 ---
-You can contact me at ccsinsf@gmail.com
+You can contact me at catherine.scott3@gmail.com
