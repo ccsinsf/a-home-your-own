@@ -2,8 +2,6 @@
 
 {% block content %}
 
-
-
 <div class = "title">
     <div class="card-group">
     <div class="card">
@@ -21,26 +19,18 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 
-
 <script>
-function testFunction() {
-    let testObj = {1: "TESTING"}
-    console.log(testObj);
-}
-
-testFunction()
-
-let testObj2 = {1: "testing again"}
-console.log(testObj2);
 
 var list_of_hist_Prices = JSON.parse({{ list_of_hist_Prices | tojson }});
+// Parse JSON of historical home price objects to JSON
 
 console.log(list_of_hist_Prices);
 
-// for (let key of Object.keys(dict_of_hist_Prices)) {console.log();}
-
+// To pass in variables to the Chart.JS object, will need to instanciate empty arrays and pass in values from price objects. 
 let all_prices_for_city_id = []
+
 let all_labels_array = []
+// Labels are month_count and year_count
 
 let city_name = list_of_hist_Prices[0].city_name
 
@@ -51,24 +41,21 @@ for (let key of list_of_hist_Prices){
     // {console.log(key.year_count)}; this works 
     // {console.log(key.price_item)}; this works
     console.log(key.state);
-    // let labelscjs = {labels: [key.month_count, key.year_count]}
-    // console.log(labelscjs)
-
 
     let cjs_price_item = key.price_item
+    // Chart.JS price_items are found in the keys of price_items
 
     all_prices_for_city_id.push(cjs_price_item)
+    // Append the chart.js price items to our array for all prices 
 
     let month_count_array = key.month_count
 
     let year_count_array = key.year_count
 
     all_labels_array.push(key.month_count + "/ "+ key.year_count)
+    // Append month_count and year_count to all_labels array 
 
-    // console.log(datacjs)
     };
-
-    
 
 console.log(all_prices_for_city_id)
 console.log(all_labels_array)
@@ -92,8 +79,6 @@ var chart = new Chart(ctx, {
 
     // other colors that work: #99CED4 (light blue/cotton)
 
-    // DO var hist_Prices and let data need to move back here
-
     // Configuration options go here
     options: {
         responsive : true,
@@ -101,53 +86,8 @@ var chart = new Chart(ctx, {
     }
 });
 
-// console.log({type: 'line',
-//     data: {
-//         labels: all_labels_array,
-//         datasets: [{
-//             label: city_name + ", " + state,
-//             backgroundColor: '#88BBDG',
-//             borderColor: '#88BBDG',
-//             data: all_prices_for_city_id,
-//         }]
-//     },
 
-//     // DO var hist_Prices and let data need to move back here
-
-//     // Configuration options go here
-//     options: {
-//         responsive : true,
-
-//     }})
 
 </script>
-
-
-
-<!-- <script>
-var ctx = document.getElementById('myChart').getContext('2d');
-var chart = new Chart(ctx, {
-    // The type of chart we want to create
-    type: 'line',
-
-    // The data for our dataset
-
-    data: {
-        labels: all_labels_array,
-        datasets: [{
-            label: city_name + "," + state,
-            backgroundColor: 'rgb(22, 29, 247)',
-            borderColor: 'rgb(22, 29, 247)',
-            data: all_prices_for_city_id,
-        }]
-    };
-
-    // DO var hist_Prices and let data need to move back here
-
-    // Configuration options go here
-    options: {}
-});
-</script>
- -->
 
 {% endblock %}

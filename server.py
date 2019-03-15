@@ -74,7 +74,6 @@ def find_budget():
 
     print(cityLocations)
     # print(cityLocations)
-    # This is working ^ 
 
     print("Debugging 3: This is right before def get_mapbox_json")
 
@@ -91,7 +90,7 @@ def find_budget():
 def show_city_details(city_id):
     """Show details about a given city."""
 
-# similar to {city.prices[0].median_home_price}
+    # similar to {city.prices[0].median_home_price}
     
     city_objects = City.query.filter_by(city_id=city_id).all()
 
@@ -116,9 +115,6 @@ def redirect_to_historicaldata(city_id):
     historicaldata_objects = HistoricalData.query.filter_by(city_id=city_id).all()
     # historicaldata = db.session.query(HistoricalData).filter_by(city_id=city_id)
     # given the city object, you need to find the city_id and match the historical data on city id 
-
-    # print(historicaldata_objects)
-
     
     print("**debug6**")
 
@@ -156,6 +152,12 @@ def redirect_to_historicaldata(city_id):
 def redirect_to_test():
 
     return render_template("/test.html")
+
+# Will update this after demo night 
+# @app.route("/about")
+# def redirect_to_about():
+    
+#     return render_template("/about.html")
 
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the
